@@ -84,4 +84,22 @@ public class CategoryDAO {
         return c;
     }
 
+    public static Category searchCategory(String lbl){
+        Category c = new Category();
+        try {
+            PreparedStatement stmt = db.prepareStatement("select * from categories where label = ?");
+            stmt.setString(1, lbl);
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                c.setId(res.getInt("categoryID"));
+                c.setLabel(res.getString("label"));
+                c.setParentID(res.getInt("parentID"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+
 }

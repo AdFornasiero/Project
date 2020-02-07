@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="" />
+    <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/SupplierDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Supplier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/SupplierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/SupplierDAO.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +27,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -29,17 +46,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java\org\filrouge\DAL" />
       <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\resources\org\filrouge" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java\org\filrouge\controllers" />
+      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java" />
     </key>
   </component>
   <component name="RunManager">
@@ -74,6 +93,7 @@
       <updated>1580891199128</updated>
       <workItem from="1580891204335" duration="17471000" />
       <workItem from="1580982500861" duration="7293000" />
+      <workItem from="1581063164418" duration="9429000" />
     </task>
     <servers />
   </component>
@@ -89,33 +109,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580891241214" />
-    <state width="1877" height="84" key="GridCell.Tab.0.bottom" timestamp="1581003945671">
+    <state width="1877" height="283" key="GridCell.Tab.0.bottom" timestamp="1581073701052">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="84" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581003945671" />
-    <state width="1877" height="84" key="GridCell.Tab.0.center" timestamp="1581003945671">
+    <state width="1877" height="283" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581073701052" />
+    <state width="1877" height="283" key="GridCell.Tab.0.center" timestamp="1581073701052">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="84" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581003945671" />
-    <state width="1877" height="84" key="GridCell.Tab.0.left" timestamp="1581003945671">
+    <state width="1877" height="283" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581073701052" />
+    <state width="1877" height="283" key="GridCell.Tab.0.left" timestamp="1581073701052">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="84" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581003945671" />
-    <state width="1877" height="84" key="GridCell.Tab.0.right" timestamp="1581003945671">
+    <state width="1877" height="283" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581073701052" />
+    <state width="1877" height="283" key="GridCell.Tab.0.right" timestamp="1581073701052">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="84" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581003945671" />
+    <state width="1877" height="283" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581073701052" />
     <state x="2410" y="176" key="Maven.ArtifactSearchDialog" timestamp="1580892132114">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2410" y="176" key="Maven.ArtifactSearchDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580892132114" />
+    <state x="2575" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1581063164152">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2575" y="345" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581063164152" />
     <state x="2262" y="223" key="new project wizard" timestamp="1580893074319">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2262" y="223" key="new project wizard/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580893074319" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1580905479001">
+    <state x="2586" y="149" key="refactoring.ChangeSignatureDialog" timestamp="1581072235169">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580905479001" />
+    <state x="2586" y="149" key="refactoring.ChangeSignatureDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581072235169" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581064834536">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581064834536" />
   </component>
 </project>

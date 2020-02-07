@@ -8,9 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.StageStyle;
 import org.filrouge.DAL.Category;
+import org.filrouge.DAL.DBConnect;
 import org.filrouge.DAL.Product;
 import org.filrouge.DAL.ProductDAO;
 
@@ -19,6 +20,7 @@ import java.time.LocalDate;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -48,6 +50,22 @@ public class Panel implements Initializable {
     public Button btn_product_save;
     public Button btn_product_cancel;
     public CheckBox chk_available;
+    public Label stock_error;
+    public Label description_error;
+    public Label price_error;
+    public Label maker_error;
+    public Label reference_error;
+    public Label label_error;
+
+    HashMap<String, String> labelErr, referenceErr, makerErr, priceErr, descriptionErr, stockErr;
+
+    String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]?$)"};
+    String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]?$)"};
+    String[] makerRules = {"required", "min_length(2)", "max_length(32)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]?$)"};
+    String[] priceRules = {"required", "max_length(9)", "regex(^[0-9]{1,6}(.[0-9]{1,2})?$)"};
+    String[] descriptionRules = {"max_length(1024)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]?$)"};
+    String[] stockRules = {"required", "integer", "max_length(8)"};
+
 
     ObservableList<Product> products = FXCollections.observableArrayList();
     ObservableList<String> categories = FXCollections.observableArrayList();
@@ -68,6 +86,8 @@ public class Panel implements Initializable {
         category.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getLabel()));
 
         product_table.setItems(products);
+
+        FormValidation.setDatabase(DBConnect.connect());
     }
 
     public void product_select(MouseEvent mouseEvent) {
@@ -105,10 +125,6 @@ public class Panel implements Initializable {
         else{
             lbl_update_date.setText("Dernière modification:  -");
         }
-
-
-
-
     }
 
     public void product_remove(ActionEvent actionEvent) {
@@ -143,7 +159,48 @@ public class Panel implements Initializable {
 
     public void product_update(ActionEvent actionEvent) {
 
-        System.out.println(cmb_category.getValue());
+        FormValidation.setMessage("required", "Champs obligatoire");
+        FormValidation.setMessage("min_length", "Champs incorrect");
+        FormValidation.setMessage("max_length", "Champs incorrect");
+        FormValidation.setMessage("regex", "Champs incorrect");
+        FormValidation.setMessage("integer", "Champs incorrect");
+
+        FormValidation.validField(inp_maker.getText(), makerRules);
+        makerErr = FormValidation.getMessages();
+        maker_error.setText(makerErr.values().stream().findFirst().get());
+
+        FormValidation.validField(inp_price.getText(), priceRules);
+        priceErr = FormValidation.getMessages();
+        price_error.setText(priceErr.values().stream().findFirst().get());
+
+        FormValidation.validField(inp_description.getText(), descriptionRules);
+        descriptionErr = FormValidation.getMessages();
+        description_error.setText(descriptionErr.values().stream().findFirst().get());
+
+        FormValidation.validField(inp_stock.getText(), stockRules);
+        stockErr = FormValidation.getMessages();
+        stock_error.setText(stockErr.values().stream().findFirst().get());
+
+        //Product p = new Product();
 
     }
+
+    public void label_changed(KeyEvent actionEvent) {
+        FormValidation.validField(inp_label.getText(), labelRules);
+        labelErr = FormValidation.getMessages();
+        System.out.println(labelErr);
+        if(!labelErr.isEmpty()){
+            label_error.setText(labelErr.values().stream().findFirst().get());
+        }
+    }
+
+    public void reference_changed(KeyEvent actionEvent) {
+        FormValidation.validField(inp_reference.getText(), referenceRules);
+        referenceErr = FormValidation.getMessages();
+        if(!labelErr.isEmpty()){
+            reference_error.setText(referenceErr.values().stream().findFirst().get());
+        }
+    }
+
+
 }

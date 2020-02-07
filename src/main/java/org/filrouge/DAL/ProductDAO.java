@@ -52,7 +52,7 @@ public class ProductDAO {
     public static boolean updateProduct(Product p){
         boolean updated = false;
         try {
-            PreparedStatement stmt = db.prepareStatement("update products set label = ?, reference = ?, maker = ?, ptprice = ?, description = ?, stock = ?, updatedate = ?, available = ?, supplierID = ?, categoryID = ?");
+            PreparedStatement stmt = db.prepareStatement("update products set label = ?, reference = ?, maker = ?, ptprice = ?, description = ?, stock = ?, updatedate = ?, available = ?, supplierID = ?, categoryID = ? where productID = ?");
             stmt.setString(1, p.getLabel());
             stmt.setString(2, p.getReference());
             stmt.setString(3, p.getMaker());
@@ -61,8 +61,9 @@ public class ProductDAO {
             stmt.setInt(6, p.getStock());
             //stmt.setDate(7, );
             stmt.setBoolean(8, p.isAvailable());
-            stmt.setInt(9, p.getSupplier());
+            stmt.setInt(9, p.getSupplier().getId());
             stmt.setInt(10, p.getCategory().getId());
+            stmt.setInt(11, p.getId());
 
             if(stmt.executeUpdate() == 1){
                 updated = true;

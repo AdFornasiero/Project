@@ -12,21 +12,10 @@ public class Product {
     private Date adddate, updatedate;
     private boolean available;
 
-    public Product(int id, int supplierID, Category category, String label, String reference, String maker, String description, double price, Date adddate, Date updatedate, int stock) {
-        this.id = id;
-        this.category = category;
-        this.label = label;
-        this.reference = reference;
-        this.maker = maker;
-        this.description = description;
-        this.price = price;
-        this.adddate = adddate;
-        this.updatedate = updatedate;
-        this.stock = stock;
-    }
 
     public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, Date updatedate, boolean available, int stock) {
         this.id = id;
+        this.supplier = SupplierDAO.getSupplier(supplierID);
         this.label = label;
         this.reference = reference;
         this.maker = maker;
