@@ -77,6 +77,7 @@ public class FormValidation {
                 }
             }
 
+
             // Search if rule needs numerical value and parse it
             for(String numericalRule: numericalRules) {
                 if(rule.equals(numericalRule)){
@@ -86,6 +87,10 @@ public class FormValidation {
                     catch(Exception e){
                     }
                 }
+            }
+
+            if(!customMessages.containsKey(rule)) {
+                customMessages.put(rule, "Error");
             }
 
             switch(rule){

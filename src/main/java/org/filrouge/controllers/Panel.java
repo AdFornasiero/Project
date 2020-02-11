@@ -59,11 +59,11 @@ public class Panel implements Initializable {
 
     HashMap<String, String> labelErr, referenceErr, makerErr, priceErr, descriptionErr, stockErr;
 
-    String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]?$)"};
-    String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]?$)"};
-    String[] makerRules = {"required", "min_length(2)", "max_length(32)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]?$)"};
+    String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
+    String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
+    String[] makerRules = {"required", "min_length(2)", "max_length(32)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] priceRules = {"required", "max_length(9)", "regex(^[0-9]{1,6}(.[0-9]{1,2})?$)"};
-    String[] descriptionRules = {"max_length(1024)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]?$)"};
+    String[] descriptionRules = {"max_length(1024)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] stockRules = {"required", "integer", "max_length(8)"};
 
 
@@ -88,6 +88,13 @@ public class Panel implements Initializable {
         product_table.setItems(products);
 
         FormValidation.setDatabase(DBConnect.connect());
+
+
+        FormValidation.setMessage("required", "Champs obligatoire");
+        FormValidation.setMessage("min_length", "Champs incorrect");
+        FormValidation.setMessage("max_length", "Champs incorrect");
+        FormValidation.setMessage("regex", "Champs incorrect");
+        FormValidation.setMessage("integer", "Champs incorrect");
     }
 
     public void product_select(MouseEvent mouseEvent) {
@@ -131,19 +138,20 @@ public class Panel implements Initializable {
 
         Product p = product_table.getSelectionModel().getSelectedItem();
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        //alert.initStyle(StageStyle.);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Suppression de " + p.getLabel());
-        alert.setContentText("Voulez-vous vraiment supprimer ce produit?\n\nCette opération est irréversible.");
-        Optional<ButtonType> confirm = alert.showAndWait();
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Suppression de " + p.getLabel());
+        confirm.setHeaderText(null);
+        confirm.setContentText("Voulez-vous vraiment supprimer ce produit?\nCette opération est irréversible.");
+        Optional<ButtonType> btn_confirm = confirm.showAndWait();
 
-        if(confirm.get() == ButtonType.OK){
+        if(btn_confirm.get() == ButtonType.OK){
             if(ProductDAO.removeProduct(p.getId())){
                 products.remove(p);
             }
             else{
-                System.out.println("ERREUR");
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setTitle("Suppression de " + p.getLabel());
+                error.setContentText("Erreur lors de la suppression du produit. ");
             }
         }
 
@@ -159,11 +167,6 @@ public class Panel implements Initializable {
 
     public void product_update(ActionEvent actionEvent) {
 
-        FormValidation.setMessage("required", "Champs obligatoire");
-        FormValidation.setMessage("min_length", "Champs incorrect");
-        FormValidation.setMessage("max_length", "Champs incorrect");
-        FormValidation.setMessage("regex", "Champs incorrect");
-        FormValidation.setMessage("integer", "Champs incorrect");
 
         FormValidation.validField(inp_maker.getText(), makerRules);
         makerErr = FormValidation.getMessages();
@@ -192,13 +195,19 @@ public class Panel implements Initializable {
         if(!labelErr.isEmpty()){
             label_error.setText(labelErr.values().stream().findFirst().get());
         }
+        else{
+            label_error.setText("");
+        }
     }
 
     public void reference_changed(KeyEvent actionEvent) {
         FormValidation.validField(inp_reference.getText(), referenceRules);
         referenceErr = FormValidation.getMessages();
-        if(!labelErr.isEmpty()){
+        if(!referenceErr.isEmpty()){
             reference_error.setText(referenceErr.values().stream().findFirst().get());
+        }
+        else{
+            reference_error.setText("");
         }
     }
 

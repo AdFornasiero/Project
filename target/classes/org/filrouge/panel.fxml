@@ -52,7 +52,7 @@
                                           <Insets bottom="1.0" left="2.0" top="12.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_label" layoutX="103.0" layoutY="134.0" onKeyPressed="#label_changed" prefHeight="25.0" prefWidth="181.0" />
+                                    <TextField fx:id="inp_label" layoutX="103.0" layoutY="134.0" onKeyReleased="#label_changed" prefHeight="25.0" prefWidth="181.0" />
                                     <Label fx:id="label_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
