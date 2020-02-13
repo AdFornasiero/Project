@@ -123,4 +123,22 @@ public class Product {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", stock=" + stock +
+                ", supplier=" + supplier +
+                ", category=" + category +
+                ", label='" + label + '\'' +
+                ", reference='" + reference + '\'' +
+                ", maker='" + maker + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", adddate=" + adddate +
+                ", updatedate=" + updatedate +
+                ", available=" + available +
+                '}';
+    }
 }

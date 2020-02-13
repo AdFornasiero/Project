@@ -63,7 +63,7 @@
                                           <Insets bottom="1.0" left="2.0" top="6.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_reference" layoutX="95.0" layoutY="174.0" prefHeight="25.0" prefWidth="181.0" />
+                                    <TextField fx:id="inp_reference" layoutX="95.0" layoutY="174.0" onKeyReleased="#reference_changed" prefHeight="25.0" prefWidth="181.0" />
                                     <Label fx:id="reference_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
@@ -80,7 +80,7 @@
                                           <Insets bottom="1.0" left="2.0" top="12.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_maker" layoutX="83.0" layoutY="213.0" prefHeight="25.0" prefWidth="181.0" />
+                                    <TextField fx:id="inp_maker" layoutX="83.0" layoutY="213.0" onKeyReleased="#maker_changed" prefHeight="25.0" prefWidth="181.0" />
                                     <Label fx:id="maker_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
@@ -91,7 +91,7 @@
                                           <Insets bottom="1.0" left="2.0" top="6.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_price" layoutX="76.0" layoutY="261.0" prefHeight="25.0" prefWidth="181.0" />
+                                    <TextField fx:id="inp_price" layoutX="76.0" layoutY="261.0" onKeyReleased="#price_changed" prefHeight="25.0" prefWidth="181.0" />
                                     <Label fx:id="price_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
@@ -102,7 +102,7 @@
                                           <Insets bottom="1.0" left="2.0" top="6.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextArea fx:id="inp_description" minHeight="-Infinity" prefHeight="83.0" prefWidth="282.0" snapToPixel="false" text="Salut" wrapText="true" />
+                                    <TextArea fx:id="inp_description" minHeight="-Infinity" onKeyReleased="#description_changed" prefHeight="83.0" prefWidth="282.0" snapToPixel="false" text="Salut" wrapText="true" />
                                     <Label fx:id="description_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
@@ -119,7 +119,7 @@
                                           <Insets bottom="1.0" left="2.0" top="12.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_stock" prefHeight="25.0" prefWidth="74.0" />
+                                    <TextField fx:id="inp_stock" onKeyReleased="#stock_changed" prefHeight="25.0" prefWidth="74.0" />
                                     <Label fx:id="stock_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />

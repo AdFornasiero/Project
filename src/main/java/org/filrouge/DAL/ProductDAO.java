@@ -59,7 +59,7 @@ public class ProductDAO {
             stmt.setDouble(4, p.getPrice());
             stmt.setString(5, p.getDescription());
             stmt.setInt(6, p.getStock());
-            //stmt.setDate(7, );
+            stmt.setDate(7, p.getUpdatedate());
             stmt.setBoolean(8, p.isAvailable());
             stmt.setInt(9, p.getSupplier().getId());
             stmt.setInt(10, p.getCategory().getId());

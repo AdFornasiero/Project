@@ -49,6 +49,20 @@ public class FormValidation {
         db = con;
     }
 
+    public static boolean validFields(String[] values, String[][] rules){
+        int nbErrors = 0;
+        List<String> errors = new ArrayList<>();
+        for(int i = 0; i < values.length; i++){
+            errors = validField(values[i], rules[i]);
+            nbErrors = nbErrors + errors.size();
+        }
+        if(nbErrors == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public static List<String> validField(String value, String[] rules){
         errors.clear();
@@ -76,7 +90,6 @@ public class FormValidation {
                     }
                 }
             }
-
 
             // Search if rule needs numerical value and parse it
             for(String numericalRule: numericalRules) {
@@ -225,7 +238,6 @@ public class FormValidation {
         }
     }
 
-
     public static void setMessages(HashMap<String, String> messages) {
         FormValidation.customMessages = messages;
     }
@@ -239,13 +251,30 @@ public class FormValidation {
             if(errors.contains(key)){
                 finalMessages.put(key, value);
             }
+            if(errors.contains(key) && !customMessages.containsKey(key)){
+                finalMessages.put(key, "");
+            }
         });
         return finalMessages;
     }
 
     public static String getMessage(String rule){
         if(errors.contains(rule) && customMessages.containsKey(rule)){
-            return customMessages.get(rule);
+            if(customMessages.containsKey("required")){
+                return customMessages.get("required");
+            }
+            else{
+                return customMessages.get(rule);
+            }
+        }
+        else{
+            return "";
+        }
+    }
+
+    public static String getFirstMessage(){
+        if(!errors.isEmpty() && !customMessages.isEmpty()){
+            return customMessages.get(errors.get(0));
         }
         else{
             return "";
