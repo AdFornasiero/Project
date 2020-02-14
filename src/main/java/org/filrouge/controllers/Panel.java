@@ -22,6 +22,7 @@ import java.time.format.FormatStyle;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
 public class Panel implements Initializable {
 
 
@@ -54,6 +55,7 @@ public class Panel implements Initializable {
     public Label maker_error;
     public Label reference_error;
     public Label label_error;
+    public Label lbl_update_success;
 
     String labelEr, referenceEr, makerEr, priceEr, descriptionEr, stockEr;
 
@@ -69,6 +71,9 @@ public class Panel implements Initializable {
 
     ObservableList<Product> products = FXCollections.observableArrayList();
     ObservableList<String> categories = FXCollections.observableArrayList();
+
+    Product selected;
+    int selectedIndex;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -98,37 +103,40 @@ public class Panel implements Initializable {
     }
 
     public void product_select(MouseEvent mouseEvent) {
-        Product p = product_table.getSelectionModel().getSelectedItem();
-        inp_label.setText(p.getLabel());
-        inp_reference.setText(p.getReference());
-        inp_maker.setText(p.getMaker());
-        inp_price.setText(String.valueOf(p.getPrice()));
-        inp_description.setText(p.getDescription());
+        selected = product_table.getSelectionModel().getSelectedItem();
+        selectedIndex = product_table.getSelectionModel().getSelectedIndex();
+
+        inp_label.setText(selected.getLabel());
+        inp_reference.setText(selected.getReference());
+        inp_maker.setText(selected.getMaker());
+        inp_price.setText(String.valueOf(selected.getPrice()));
+        inp_description.setText(selected.getDescription());
         //inp_supplier.setText(p.);
-        inp_stock.setText(String.valueOf(p.getStock()));
-        chk_available.setSelected(p.isAvailable());
-        inp_stock.setText(String.valueOf(p.getStock()));
-        lbl_id.setText("ID produit: " + String.valueOf(p.getId()));
+        inp_stock.setText(String.valueOf(selected.getStock()));
+        chk_available.setSelected(selected.isAvailable());
+        inp_stock.setText(String.valueOf(selected.getStock()));
+        lbl_id.setText("ID produit: " + String.valueOf(selected.getId()));
 
         clearErrors();
+        lbl_update_success.setVisible(false);
 
-        if(cmb_category.getItems().contains(p.getCategory().getLabel())){
-            cmb_category.setValue(p.getCategory().getLabel());
+        if(cmb_category.getItems().contains(selected.getCategory().getLabel())){
+            cmb_category.setValue(selected.getCategory().getLabel());
         }
         else{
-            cmb_category.setValue("\t" + p.getCategory().getLabel());
+            cmb_category.setValue("\t" + selected.getCategory().getLabel());
         }
 
-        if(p.getAdddate() != null){
-            LocalDate adddate = LocalDate.parse(String.valueOf(p.getAdddate()));
+        if(selected.getAdddate() != null){
+            LocalDate adddate = LocalDate.parse(String.valueOf(selected.getAdddate()));
             lbl_add_date.setText("Date de création: " + adddate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
         }
         else{
             lbl_update_date.setText("Date de création:  -");
         }
 
-        if(p.getUpdatedate() != null){
-            LocalDate updatedate = LocalDate.parse(String.valueOf(p.getUpdatedate()));
+        if(selected.getUpdatedate() != null){
+            LocalDate updatedate = LocalDate.parse(String.valueOf(selected.getUpdatedate()));
             lbl_update_date.setText("Dernière modification: " + updatedate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
         }
         else{
@@ -138,21 +146,19 @@ public class Panel implements Initializable {
 
     public void product_remove(ActionEvent actionEvent) {
 
-        Product p = product_table.getSelectionModel().getSelectedItem();
-
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-        confirm.setTitle("Suppression de " + p.getLabel());
+        confirm.setTitle("Suppression de " + selected.getLabel());
         confirm.setHeaderText(null);
         confirm.setContentText("Voulez-vous vraiment supprimer ce produit?\nCette opération est irréversible.");
         Optional<ButtonType> btn_confirm = confirm.showAndWait();
 
         if(btn_confirm.get() == ButtonType.OK){
-            if(ProductDAO.removeProduct(p.getId())){
-                products.remove(p);
+            if(ProductDAO.removeProduct(selected.getId())){
+                products.remove(selected);
             }
             else{
                 Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setTitle("Suppression de " + p.getLabel());
+                error.setTitle("Suppression de " + selected.getLabel());
                 error.setContentText("Erreur lors de la suppression du produit. ");
             }
         }
@@ -162,10 +168,6 @@ public class Panel implements Initializable {
     public void product_update(ActionEvent actionEvent) {
 
         String[] values = {inp_label.getText(), inp_reference.getText(), inp_maker.getText(), inp_price.getText(), inp_description.getText(), inp_stock.getText()};
-        Product selected;
-        if(product_table.getSelectionModel().getSelectedItem() == null){
-            selected = 
-        }
 
         int id, stock;
         int supplier;
@@ -185,25 +187,24 @@ public class Panel implements Initializable {
             reference = inp_reference.getText().toUpperCase();
             maker = inp_maker.getText();
             description = inp_description.getText();
-            price = Double.valueOf(inp_price.getText());
             category = CategoryDAO.searchCategory(String.valueOf(cmb_category.getValue()).trim()).getId();
             adddate = selected.getAdddate();
             updatedate = new Date(System.currentTimeMillis());
             available = chk_available.isSelected();
             stock = Integer.valueOf(inp_stock.getText());
+            if(inp_price.getText().indexOf(',') == -1)
+                price = Double.valueOf(inp_price.getText());
+            else
+                price = Double.valueOf(inp_price.getText().replace(',', '.'));
 
             Product p = new Product(id, supplier, label, reference, maker, price, category, description, adddate, updatedate, available, stock);
             ProductDAO.updateProduct(p);
 
-            products.set(product_table.getSelectionModel().getSelectedIndex(), p);
-
-            Popup confirm = new Popup();
-            confirm.setAutoHide(true);
-            confirm.setAutoFix(true);
-            confirm.getContent().add(new Label("Modification effectuée"));
+            products.set(selectedIndex, p);
+            lbl_update_success.setVisible(true);
         }
         else{
-            System.out.println("erreurs");
+            lbl_update_success.setVisible(false);
         }
 
     }

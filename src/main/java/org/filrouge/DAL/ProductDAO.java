@@ -74,5 +74,31 @@ public class ProductDAO {
         return updated;
     }
 
+    public static Product getProduct(int id){
+        Product p = null;
+        try {
+            PreparedStatement stmt = db.prepareStatement("select * from products where productID = ?");
+            stmt.setInt(1, id);
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                p = new Product(res.getInt("productID"),
+                        res.getInt("supplierID"),
+                        res.getString("label"),
+                        res.getString("reference"),
+                        res.getString("maker"),
+                        res.getDouble("ptprice"),
+                        res.getInt("categoryID"),
+                        res.getString("description"),
+                        res.getDate("adddate"),
+                        res.getDate("updatedate"),
+                        res.getBoolean("available"),
+                        res.getInt("stock"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return p;
+    }
+
 
 }
