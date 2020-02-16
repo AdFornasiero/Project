@@ -10,6 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import org.filrouge.DAL.*;
 
@@ -19,6 +21,8 @@ import java.time.LocalDate;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -56,8 +60,10 @@ public class Panel implements Initializable {
     public Label reference_error;
     public Label label_error;
     public Label lbl_update_success;
-
-    String labelEr, referenceEr, makerEr, priceEr, descriptionEr, stockEr;
+    public Label lbl_nb_products;
+    public Button btn_product_add;
+    public Label category_error;
+    public Label form_title;
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
@@ -65,9 +71,8 @@ public class Panel implements Initializable {
     String[] priceRules = {"required", "max_length(9)", "regex(^[0-9]{1,6}(.[0-9]{1,2})?$)"};
     String[] descriptionRules = {"max_length(2048)", "regex(^[0-9A-Za-z.,-_?;:\\!%*&\"\''()@=²áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]*$)"};
     String[] stockRules = {"required", "integer", "max_length(8)"};
-
-    String[][] rules = {labelRules, referenceRules, makerRules, priceRules, descriptionRules, stockRules};
-
+    String[] categoryRules = {"exists(categories.label)"};
+    String labelEr, referenceEr, makerEr, priceEr, descriptionEr, stockEr, categoryEr;
 
     ObservableList<Product> products = FXCollections.observableArrayList();
     ObservableList<String> categories = FXCollections.observableArrayList();
@@ -81,8 +86,11 @@ public class Panel implements Initializable {
         products.addAll(ProductDAO.getProducts());
         categories.addAll(Category.getOrderedCategories());
 
+        categories.add(0,"Sélectionnez une catégorie");
         cmb_category_search.setItems(categories);
         cmb_category.setItems(categories);
+        cmb_category_search.setValue("Sélectionnez une catégorie");
+
 
         reference.setCellValueFactory(new PropertyValueFactory<>("reference"));
         maker.setCellValueFactory(new PropertyValueFactory<>("maker"));
@@ -93,54 +101,63 @@ public class Panel implements Initializable {
         product_table.setItems(products);
 
         FormValidation.setDatabase(DBConnect.connect());
-
-
         FormValidation.setMessage("required", "Champs obligatoire");
         FormValidation.setMessage("min_length", "Ce n'est pas assez long");
         FormValidation.setMessage("max_length", "C'est un peu trop long");
         FormValidation.setMessage("regex", "Saisie incorrecte");
         FormValidation.setMessage("integer", "Entrez un nombre");
+        FormValidation.setMessage("exists", "Saisie incorrecte");
+        FormValidation.setMessage("unique", "Déja utilisée");
     }
 
     public void product_select(MouseEvent mouseEvent) {
-        selected = product_table.getSelectionModel().getSelectedItem();
-        selectedIndex = product_table.getSelectionModel().getSelectedIndex();
 
-        inp_label.setText(selected.getLabel());
-        inp_reference.setText(selected.getReference());
-        inp_maker.setText(selected.getMaker());
-        inp_price.setText(String.valueOf(selected.getPrice()));
-        inp_description.setText(selected.getDescription());
-        //inp_supplier.setText(p.);
-        inp_stock.setText(String.valueOf(selected.getStock()));
-        chk_available.setSelected(selected.isAvailable());
-        inp_stock.setText(String.valueOf(selected.getStock()));
-        lbl_id.setText("ID produit: " + String.valueOf(selected.getId()));
+        if(product_table.getSelectionModel() != null) {
+            selected = product_table.getSelectionModel().getSelectedItem();
+            selectedIndex = product_table.getSelectionModel().getSelectedIndex();
 
-        clearErrors();
-        lbl_update_success.setVisible(false);
+            inp_label.setText(selected.getLabel());
+            inp_reference.setText(selected.getReference());
+            inp_maker.setText(selected.getMaker());
+            inp_price.setText(String.valueOf(selected.getPrice()));
+            inp_description.setText(selected.getDescription());
+            //inp_supplier.setText(p.);
+            inp_stock.setText(String.valueOf(selected.getStock()));
+            chk_available.setSelected(selected.isAvailable());
+            inp_stock.setText(String.valueOf(selected.getStock()));
+            lbl_id.setText("ID produit: " + String.valueOf(selected.getId()));
 
-        if(cmb_category.getItems().contains(selected.getCategory().getLabel())){
-            cmb_category.setValue(selected.getCategory().getLabel());
-        }
-        else{
-            cmb_category.setValue("\t" + selected.getCategory().getLabel());
-        }
+            clearErrors();
+            lbl_update_success.setVisible(false);
 
-        if(selected.getAdddate() != null){
-            LocalDate adddate = LocalDate.parse(String.valueOf(selected.getAdddate()));
-            lbl_add_date.setText("Date de création: " + adddate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
-        }
-        else{
-            lbl_update_date.setText("Date de création:  -");
-        }
+            if (cmb_category.getItems().contains(selected.getCategory().getLabel())) {
+                cmb_category.setValue(selected.getCategory().getLabel());
+            } else {
+                cmb_category.setValue("\t" + selected.getCategory().getLabel());
+            }
 
-        if(selected.getUpdatedate() != null){
-            LocalDate updatedate = LocalDate.parse(String.valueOf(selected.getUpdatedate()));
-            lbl_update_date.setText("Dernière modification: " + updatedate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+            if (selected.getAdddate() != null) {
+                LocalDate adddate = LocalDate.parse(String.valueOf(selected.getAdddate()));
+                lbl_add_date.setText("Date de création: " + adddate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+            } else {
+                lbl_update_date.setText("Date de création:  -");
+            }
+
+            if (selected.getUpdatedate() != null) {
+                LocalDate updatedate = LocalDate.parse(String.valueOf(selected.getUpdatedate()));
+                lbl_update_date.setText("Dernière modification: " + updatedate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+            } else {
+                lbl_update_date.setText("Dernière modification:  -");
+            }
         }
-        else{
-            lbl_update_date.setText("Dernière modification:  -");
+    }
+
+    public void product_save(ActionEvent actionEvent) {
+        if(btn_product_save.getText().equals("Ajouter")){
+            product_add();
+        }
+        else if(btn_product_save.getText().equals("Enregistrer")){
+            product_update();
         }
     }
 
@@ -165,10 +182,17 @@ public class Panel implements Initializable {
 
     }
 
-    public void product_update(ActionEvent actionEvent) {
-
-        String[] values = {inp_label.getText(), inp_reference.getText(), inp_maker.getText(), inp_price.getText(), inp_description.getText(), inp_stock.getText()};
-
+    public void product_update() {
+        String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
+        String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
+        String[] makerRules = {"required", "min_length(2)", "max_length(32)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
+        String[] priceRules = {"required", "max_length(9)", "regex(^[0-9]{1,6}(.[0-9]{1,2})?$)"};
+        String[] descriptionRules = {"max_length(2048)", "regex(^[0-9A-Za-z.,-_?;:\\!%*&\"\''()@=²áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]*$)"};
+        String[] stockRules = {"required", "integer", "max_length(8)"};
+        String[] categoryRules = {"exists(categories.label)"};
+        String[][] rules = {labelRules, referenceRules, makerRules, categoryRules, priceRules, descriptionRules, stockRules};
+        Label[] errorLabels = {label_error, reference_error, maker_error, category_error, price_error, description_error, stock_error};
+        String[] values = {inp_label.getText(), inp_reference.getText(), inp_maker.getText(), String.valueOf(cmb_category.getValue()).trim() ,inp_price.getText(), inp_description.getText(), inp_stock.getText()};
         int id, stock;
         int supplier;
         int category;
@@ -180,7 +204,7 @@ public class Panel implements Initializable {
         // TEMP
         Supplier s = new Supplier(); s.setId(2);
 
-        if(FormValidation.validFields(values, rules)){
+        if(FormValidation.validFields(values, rules, errorLabels)){
             id = selected.getId();
             supplier = s.getId();
             label = inp_label.getText();
@@ -205,12 +229,105 @@ public class Panel implements Initializable {
         }
         else{
             lbl_update_success.setVisible(false);
+
         }
 
     }
 
     public void product_search(ActionEvent actionEvent) {
+        List<Product> productsList = new ArrayList<>();
+        String entry = inp_product_search.getText();
+        String strCategory = String.valueOf(cmb_category_search.getValue()).trim();
+        Category category = CategoryDAO.searchCategory(strCategory);
 
+        if(!entry.isBlank()){
+            if(category.getId() == 0){
+                productsList = ProductDAO.searchProducts(entry);
+            }
+            else{
+                productsList = ProductDAO.searchProducts(entry, category);
+            }
+        }
+        else{
+            if(category.getId() == 0){
+                productsList = ProductDAO.getProducts();
+            }
+            else{
+                productsList = ProductDAO.searchProducts(category);
+            }
+        }
+        products.clear();
+        products.addAll(productsList);
+        if(products.size() != 0)
+            lbl_nb_products.setText(products.size() + " produits");
+        else{
+            lbl_nb_products.setText("Aucun produit");
+        }
+        form_title.setText("Informations détaillées");
+        btn_product_save.setText("Enregistrer");
+        lbl_update_success.setText("");
+    }
+
+    public void product_add(){
+        String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
+        String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)", "unique(products.reference)"};
+        String[] makerRules = {"required", "min_length(2)", "max_length(32)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
+        String[] priceRules = {"required", "max_length(9)", "regex(^[0-9]{1,6}(.[0-9]{1,2})?$)"};
+        String[] descriptionRules = {"max_length(2048)", "regex(^[0-9A-Za-z.,-_?;:\\!%*&\"\''()@=²áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]*$)"};
+        String[] stockRules = {"required", "integer", "max_length(8)"};
+        String[] categoryRules = {"exists(categories.label)"};
+
+        String[][] rules = {labelRules, referenceRules, makerRules, categoryRules, priceRules, descriptionRules, stockRules};
+        Label[] errorLabels = {label_error, reference_error, maker_error, category_error, price_error, description_error, stock_error};
+        String[] values = {inp_label.getText(), inp_reference.getText().toUpperCase(), inp_maker.getText(), String.valueOf(cmb_category.getValue()).trim() ,inp_price.getText(), inp_description.getText(), inp_stock.getText()};
+        int id, stock;
+        int supplier;
+        int category;
+        String label, reference, maker, description;
+        double price;
+        Date adddate;
+        boolean available;
+
+        // TEMP
+        Supplier s = new Supplier(); s.setId(2);
+        if(FormValidation.validFields(values, rules, errorLabels)){
+            id = ProductDAO.getLastId() + 1;
+            supplier = s.getId();
+            label = inp_label.getText();
+            reference = inp_reference.getText().toUpperCase();
+            maker = inp_maker.getText();
+            description = inp_description.getText();
+            category = CategoryDAO.searchCategory(String.valueOf(cmb_category.getValue()).trim()).getId();
+            adddate = new Date(System.currentTimeMillis());
+            available = chk_available.isSelected();
+            stock = Integer.valueOf(inp_stock.getText());
+            if(inp_price.getText().indexOf(',') == -1)
+                price = Double.valueOf(inp_price.getText());
+            else
+                price = Double.valueOf(inp_price.getText().replace(',', '.'));
+
+            Product p = new Product(id, supplier, label, reference, maker, price, category, description, adddate, available, stock);
+
+            ProductDAO.addProduct(p);
+            products.add(p);
+
+            lbl_update_success.setVisible(true);
+        }
+        else{
+            lbl_update_success.setVisible(false);
+        }
+    }
+
+    public void btn_add(ActionEvent actionEvent) {
+        product_table.setDisable(true);
+        form_title.setText("Ajouter un article");
+        btn_product_save.setText("Ajouter");
+        //clearFields();
+    }
+
+
+    public void cancel(ActionEvent actionEvent) {
+        product_table.setDisable(false);
     }
 
     public void text_changed(InputMethodEvent inputMethodEvent) {
@@ -253,6 +370,12 @@ public class Panel implements Initializable {
         stock_error.setText(stockEr);
     }
 
+    public void category_changed(ActionEvent actionEvent) {
+        FormValidation.validField(String.valueOf(cmb_category.getValue()).trim(), categoryRules);
+        categoryEr = FormValidation.getFirstMessage();
+        category_error.setText(categoryEr);
+    }
+
     public void clearErrors(){
         label_error.setText("");
         reference_error.setText("");
@@ -261,4 +384,20 @@ public class Panel implements Initializable {
         description_error.setText("");
         stock_error.setText("");
     }
+
+    public void clearFields(){
+        inp_label.setText("");
+        inp_reference.setText("");
+        inp_maker.setText("");
+        inp_price.setText("");
+        inp_description.setText("");
+        inp_stock.setText("");
+        chk_available.setSelected(true);
+        lbl_add_date.setText("");
+        lbl_update_date.setText("");
+        lbl_id.setText("");
+    }
+
+
+
 }

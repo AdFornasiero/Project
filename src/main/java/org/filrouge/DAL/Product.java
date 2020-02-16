@@ -28,6 +28,21 @@ public class Product {
         this.stock = stock;
     }
 
+    public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, boolean available, int stock) {
+        this.id = id;
+        this.supplier = SupplierDAO.getSupplier(supplierID);
+        this.label = label;
+        this.reference = reference;
+        this.maker = maker;
+        this.price = price;
+        this.category = CategoryDAO.getCategory(category);
+        this.description = description;
+        this.adddate = adddate;
+        this.available = available;
+        this.stock = stock;
+    }
+
+
     public int getId() {
         return id;
     }

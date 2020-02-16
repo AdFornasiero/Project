@@ -61,4 +61,15 @@ public class Category {
     public void setLabel(String label) {
         this.label = label;
     }
+
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", parentID=" + parentID +
+                ", label='" + label + '\'' +
+                ", name=" + name +
+                '}';
+    }
 }

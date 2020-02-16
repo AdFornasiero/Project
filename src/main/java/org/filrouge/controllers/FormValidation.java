@@ -12,6 +12,7 @@ RULES LIST
  */
 
 
+import javafx.scene.control.Label;
 import org.w3c.dom.ls.LSOutput;
 
 import java.sql.*;
@@ -27,6 +28,7 @@ public class FormValidation {
     // Error messages that will be return
     private static HashMap<String, String> finalMessages = new HashMap<>();
     private static HashMap<String, String> customMessages = new HashMap<>();
+    private static HashMap<String, String> allMessages = new HashMap<>();
     // Rules that need a numerical argument
     private final static String[] numericalArgs = {"equals", "min", "max", "min_length", "max_length"};
     // Rules that need the value to be numerical
@@ -55,6 +57,22 @@ public class FormValidation {
         for(int i = 0; i < values.length; i++){
             errors = validField(values[i], rules[i]);
             nbErrors = nbErrors + errors.size();
+        }
+        if(nbErrors == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public static boolean validFields(String[] values, String[][] rules, Label[] errorLabels){
+        int nbErrors = 0;
+        List<String> errors = new ArrayList<>();
+        for(int i = 0; i < values.length; i++){
+            errors = validField(values[i], rules[i]);
+            nbErrors = nbErrors + errors.size();
+            errorLabels[i].setText(getFirstMessage());
         }
         if(nbErrors == 0){
             return true;
@@ -176,7 +194,6 @@ public class FormValidation {
                 stmt = db.prepareStatement(query);
                 stmt.setString(1, value);
                 ResultSet res = stmt.executeQuery();
-
                 if(!res.next()){
                     errors.add("exists");
                 }
@@ -201,8 +218,8 @@ public class FormValidation {
                 stmt = db.prepareStatement(query);
                 stmt.setString(1, value);
                 ResultSet res = stmt.executeQuery();
-
                 if(res.next()){
+                    System.out.println("bon");
                     errors.add("unique");
                 }
             }
