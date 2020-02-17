@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrdersDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/SupplierDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/SupplierDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Category.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Category.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/CategoryDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/CategoryDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/SupplierDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/SupplierDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/FormValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/FormValidation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" afterDir="false" />
@@ -103,6 +100,7 @@
       <workItem from="1581670051526" duration="7681000" />
       <workItem from="1581723637174" duration="5666000" />
       <workItem from="1581870723895" duration="9193000" />
+      <workItem from="1581940862384" duration="9602000" />
     </task>
     <servers />
   </component>
@@ -120,12 +118,12 @@
     <state x="-1155" y="82" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581725039473" />
     <state x="612" y="184" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1581873282672" />
     <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581602347057" />
-    <state x="-1147" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1581723649456">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1581940891337">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1147" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581723649456" />
     <state x="618" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834@0.0.1536.834" timestamp="1581161223347" />
-    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581596435785" />
+    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581940891337" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580891241214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -138,30 +136,30 @@
       <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
     <state x="-1180" y="117" key="FileChooserDialogImpl/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581724565681" />
-    <state width="1493" height="159" key="GridCell.Tab.0.bottom" timestamp="1581879974025">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1877" height="187" key="GridCell.Tab.0.bottom" timestamp="1581954216325">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="255" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581729315366" />
     <state width="1493" height="159" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="182" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581679343704" />
-    <state width="1493" height="159" key="GridCell.Tab.0.center" timestamp="1581879974025">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1877" height="187" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581954216325" />
+    <state width="1877" height="187" key="GridCell.Tab.0.center" timestamp="1581954216325">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="255" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581729315366" />
     <state width="1493" height="159" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="182" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581679343704" />
-    <state width="1493" height="159" key="GridCell.Tab.0.left" timestamp="1581879974025">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1877" height="187" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581954216325" />
+    <state width="1877" height="187" key="GridCell.Tab.0.left" timestamp="1581954216324">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="255" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581729315365" />
     <state width="1493" height="159" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="182" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581679343704" />
-    <state width="1493" height="159" key="GridCell.Tab.0.right" timestamp="1581879974025">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state width="1877" height="187" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581954216324" />
+    <state width="1877" height="187" key="GridCell.Tab.0.right" timestamp="1581954216325">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="255" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581729315366" />
     <state width="1493" height="159" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="182" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581679343704" />
+    <state width="1877" height="187" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581954216325" />
     <state width="1493" height="265" key="GridCell.Tab.1.bottom" timestamp="1581872466531">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

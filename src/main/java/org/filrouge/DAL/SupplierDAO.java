@@ -1,6 +1,8 @@
 package org.filrouge.DAL;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SupplierDAO {
 
@@ -22,6 +24,21 @@ public class SupplierDAO {
             e.printStackTrace();
         }
         return s;
+    }
+
+    public static List<Supplier> getSuppliers(){
+        List<Supplier> suppliers = new ArrayList<>();
+        try{
+            Statement stmt = db.createStatement();
+            ResultSet res = stmt.executeQuery("select * from suppliers");
+            while(res.next()){
+                suppliers.add(new Supplier(res.getInt("supplierID"), res.getString("name"), res.getString("contact"), res.getString("phone")));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return suppliers;
     }
 
 }

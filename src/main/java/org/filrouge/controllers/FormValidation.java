@@ -13,11 +13,9 @@ RULES LIST
 
 
 import javafx.scene.control.Label;
-import org.w3c.dom.ls.LSOutput;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,7 +26,6 @@ public class FormValidation {
     // Error messages that will be return
     private static HashMap<String, String> finalMessages = new HashMap<>();
     private static HashMap<String, String> customMessages = new HashMap<>();
-    private static HashMap<String, String> allMessages = new HashMap<>();
     // Rules that need a numerical argument
     private final static String[] numericalArgs = {"equals", "min", "max", "min_length", "max_length"};
     // Rules that need the value to be numerical
@@ -36,7 +33,7 @@ public class FormValidation {
 
     private static Connection db;
     private static PreparedStatement stmt;
-    private static String query = "select * from table where field like ?";
+    private static String query;
 
 
     public static void setDatabase(String dburl, String usr, String pwd){
@@ -182,6 +179,7 @@ public class FormValidation {
     }
 
     private static void exists(String value, String arg) {
+        query = "select * from table where field like ?";
         String table = arg.split("\\.")[0];
         String field = arg.split("\\.")[1];
         try{
@@ -206,6 +204,7 @@ public class FormValidation {
     }
 
     private static void unique(String value, String arg) {
+        query = "select * from table where field like ?";
         String table = arg.split("\\.")[0];
         String field = arg.split("\\.")[1];
         try{
@@ -219,7 +218,6 @@ public class FormValidation {
                 stmt.setString(1, value);
                 ResultSet res = stmt.executeQuery();
                 if(res.next()){
-                    System.out.println("bon");
                     errors.add("unique");
                 }
             }
