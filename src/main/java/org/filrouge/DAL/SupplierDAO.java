@@ -30,7 +30,7 @@ public class SupplierDAO {
         List<Supplier> suppliers = new ArrayList<>();
         try{
             Statement stmt = db.createStatement();
-            ResultSet res = stmt.executeQuery("select * from suppliers");
+            ResultSet res = stmt.executeQuery("select * from suppliers order by name");
             while(res.next()){
                 suppliers.add(new Supplier(res.getInt("supplierID"), res.getString("name"), res.getString("contact"), res.getString("phone")));
             }

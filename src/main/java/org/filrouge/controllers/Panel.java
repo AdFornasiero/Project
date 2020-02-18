@@ -7,18 +7,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
-import javafx.stage.Popup;
 import javafx.util.Callback;
 import org.filrouge.DAL.*;
-
 import java.sql.Date;
 import java.time.LocalDate;
-
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -34,11 +28,11 @@ public class Panel implements Initializable {
     public TextField inp_product_search;
     public ComboBox cmb_category_search;
     public TableView<Product> product_table;
-    public TableColumn<Product, String> reference;
-    public TableColumn<Product, String> category;
-    public TableColumn<Product, String> maker;
-    public TableColumn<Product, String> label;
-    public TableColumn<Product, Double> price;
+    public TableColumn<Product, String> col_product_reference;
+    public TableColumn<Product, String> col_product_category;
+    public TableColumn<Product, String> col_product_maker;
+    public TableColumn<Product, String> col_product_label;
+    public TableColumn<Product, Double> col_product_price;
     public TextField inp_label;
     public TextField inp_reference;
     public ComboBox cmb_category;
@@ -67,6 +61,22 @@ public class Panel implements Initializable {
     public Label lbl_add_success;
     public ComboBox cmb_supplier;
 
+        // ORDER PANE
+    public ComboBox cmb_order_state_search;
+    public ComboBox cmb_order_payment_search;
+    public TextField inp_order_id;
+    public TextField inp_order_owner;
+    public Label lbl_nb_orders;
+    public TableColumn<Order, Integer> col_order_id;
+    public TableColumn<Order, Integer> col_order_owner;
+    public TableColumn<Order, Adress> col_order_billing;
+    public TableColumn<Order, Adress> col_order_delivery;
+    public TableColumn<Order, Integer> col_order_nbproducts;
+    public TableColumn<Order, Double> col_order_price;
+    public TableColumn<Order, Discount> col_order_discount;
+    public TableColumn<Order, Boolean> col_order_state;
+    public TableView<Order> orders_table;
+
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
     String[] makerRules = {"required", "min_length(2)", "max_length(32)", "regex(^[0-9A-Za-z.-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
@@ -79,15 +89,18 @@ public class Panel implements Initializable {
     ObservableList<Product> products = FXCollections.observableArrayList();
     ObservableList<String> categories = FXCollections.observableArrayList();
     ObservableList<Supplier> suppliers = FXCollections.observableArrayList();
+    ObservableList<Order> orders = FXCollections.observableArrayList();
 
     Product selected;
     int selectedIndex;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        FormValidation.setDatabase(DBConnect.connect());
         products.addAll(ProductDAO.getProducts());
         categories.addAll(Category.getOrderedCategories());
+        orders.addAll(OrderDAO.getOrders());
+
         categories.add(0,"Sélectionnez une catégorie");
         cmb_category_search.setItems(categories);
         cmb_category.setItems(categories);
@@ -107,15 +120,26 @@ public class Panel implements Initializable {
             }
         });
 
-        reference.setCellValueFactory(new PropertyValueFactory<>("reference"));
-        maker.setCellValueFactory(new PropertyValueFactory<>("maker"));
-        label.setCellValueFactory(new PropertyValueFactory<>("label"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        category.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getLabel()));
-
+        col_product_reference.setCellValueFactory(new PropertyValueFactory<>("reference"));
+        col_product_maker.setCellValueFactory(new PropertyValueFactory<>("maker"));
+        col_product_label.setCellValueFactory(new PropertyValueFactory<>("label"));
+        col_product_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        col_product_category.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getLabel()));
         product_table.setItems(products);
 
-        FormValidation.setDatabase(DBConnect.connect());
+        col_order_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_order_owner.setCellValueFactory(new PropertyValueFactory<>("owner"));
+        col_order_delivery.setCellValueFactory(new PropertyValueFactory<>("deliveryAdress"));
+        col_order_billing.setCellValueFactory(new PropertyValueFactory<>("billingAdress"));
+        col_order_nbproducts.setCellValueFactory(new PropertyValueFactory<>("nbproducts"));
+        col_order_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        col_order_discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
+        col_order_state.setCellValueFactory(new PropertyValueFactory<>("state"));
+        orders_table.setItems(orders);
+
+        cmb_order_payment_search.setItems(FXCollections.observableArrayList("Toutes", "Effectué", "En attente"));
+        cmb_order_state_search.setItems(FXCollections.observableArrayList("Toutes", "Non validée", "En cours", "Achevée", "Annulée"));
+
         FormValidation.setMessage("required", "Champs obligatoire");
         FormValidation.setMessage("min_length", "Ce n'est pas assez long");
         FormValidation.setMessage("max_length", "C'est un peu trop long");
@@ -127,7 +151,7 @@ public class Panel implements Initializable {
 
     public void product_select(MouseEvent mouseEvent) {
         btn_product_save.setText("Enregistrer");
-        if(product_table.getSelectionModel() != null) {
+        if(product_table.getSelectionModel() != null && product_table.getSelectionModel().getSelectedItem() != null) {
             selected = product_table.getSelectionModel().getSelectedItem();
             selectedIndex = product_table.getSelectionModel().getSelectedIndex();
 
@@ -136,14 +160,11 @@ public class Panel implements Initializable {
             inp_maker.setText(selected.getMaker());
             inp_price.setText(String.valueOf(selected.getPrice()));
             inp_description.setText(selected.getDescription());
-            //inp_supplier.setText(p.);
             inp_stock.setText(String.valueOf(selected.getStock()));
             chk_available.setSelected(selected.isAvailable());
             inp_stock.setText(String.valueOf(selected.getStock()));
-            lbl_id.setText("ID produit: " + String.valueOf(selected.getId()));
-
-            clearErrors();
-            lbl_update_success.setVisible(false);
+            lbl_id.setText("ID produit: " + selected.getId());
+            cmb_supplier.setValue(SupplierDAO.getSupplier(selected.getSupplier().getId()).getName());
 
             if (cmb_category.getItems().contains(selected.getCategory().getLabel())) {
                 cmb_category.setValue(selected.getCategory().getLabel());
@@ -164,6 +185,9 @@ public class Panel implements Initializable {
             } else {
                 lbl_update_date.setText("Dernière modification:  -");
             }
+
+            clearErrors();
+            lbl_update_success.setVisible(false);
         }
     }
 
@@ -236,7 +260,6 @@ public class Panel implements Initializable {
         }
         else{
             lbl_update_success.setVisible(false);
-
         }
     }
 
@@ -326,7 +349,6 @@ public class Panel implements Initializable {
         clearErrors();
     }
 
-
     public void cancel(ActionEvent actionEvent) {
         product_table.setDisable(false);
         form_title.setText("Informations détaillées");
@@ -379,7 +401,7 @@ public class Panel implements Initializable {
     }
 
     public void supplier_changed(ActionEvent actionEvent) {
-        System.out.println(cmb_supplier.getValue());
+
     }
 
     public void clearErrors(){

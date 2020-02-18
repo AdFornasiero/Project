@@ -47,5 +47,8 @@ public class Supplier {
         this.phone = phone;
     }
 
-
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
