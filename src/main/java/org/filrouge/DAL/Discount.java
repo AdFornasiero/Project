@@ -71,13 +71,15 @@ public class Discount {
 
     @Override
     public String toString() {
-        String str;
-        if(this.percentValue != null)
-            str = this.code + " (" + this.percentValue + "%)";
-        else if(this.fixedValue != null)
-            str = this.code + " (" + this.percentValue + "%)";
-        else
-            str = this.code;
+        String str = "";
+        if(this.fixedValue != null && this.percentValue != null) {
+            if (this.percentValue != 0)
+                str = this.code + " (-" + this.percentValue + "%)";
+            else if (this.fixedValue != 0)
+                str = this.code + " (-" + this.fixedValue + "€)";
+            else
+                str = this.code;
+        }
         return str;
     }
 }

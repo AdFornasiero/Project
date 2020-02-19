@@ -74,7 +74,7 @@ public class Panel implements Initializable {
     public TableColumn<Order, Integer> col_order_nbproducts;
     public TableColumn<Order, Double> col_order_price;
     public TableColumn<Order, Discount> col_order_discount;
-    public TableColumn<Order, Integer> col_order_state;
+    public TableColumn<Order, String> col_order_state;
     public TableView<Order> orders_table;
     public Label orderid_error;
 
@@ -135,11 +135,16 @@ public class Panel implements Initializable {
         col_order_nbproducts.setCellValueFactory(new PropertyValueFactory<>("nbproducts"));
         col_order_price.setCellValueFactory(new PropertyValueFactory<>("price"));
         col_order_discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
-        col_order_state.setCellValueFactory(new PropertyValueFactory<>("state"));
+        col_order_state.setCellValueFactory(new PropertyValueFactory<>("strState"));
         orders_table.setItems(orders);
 
-        cmb_order_payment_search.setItems(FXCollections.observableArrayList("Toutes", "Effectué", "En attente"));
-        cmb_order_state_search.setItems(FXCollections.observableArrayList("Toutes", "Non validée", "En cours", "Achevée", "Annulée"));
+        cmb_order_payment_search.setItems(FXCollections.observableArrayList("Peu importe", "Effectué", "En attente"));
+        cmb_order_state_search.setItems(FXCollections.observableArrayList("Toutes", "Non validées", "En cours", "Achevées", "Annulées"));
+        cmb_order_payment_search.setValue("Peu importe");
+        cmb_order_state_search.setValue("Toutes");
+
+        if(orders.size() == 0) lbl_nb_orders.setText("Aucune commande");
+        else lbl_nb_orders.setText(orders.size() + " commandes");
 
         FormValidation.setMessage("required", "Champs obligatoire");
         FormValidation.setMessage("min_length", "Ce n'est pas assez long");
@@ -431,29 +436,13 @@ public class Panel implements Initializable {
 
 
     public void order_search_id(ActionEvent actionEvent) {
-        search_order();
-    }
-
-    public void order_search_state(ActionEvent actionEvent) {
-        search_orders();
-    }
-
-    public void order_search_payment(ActionEvent actionEvent) {
-        search_orders();
-    }
-
-
-
-    public void order_search_owner(ActionEvent actionEvent) {
-        //search_orders();
-    }
-
-    public void search_order(){
         String[] idRules = {"integer", "exists(orders.orderID)"};
         if(inp_order_id.getText().isBlank()){
             orderid_error.setText("");
             orders.clear();
             orders.addAll(OrderDAO.getOrders());
+            if(orders.size() == 0) lbl_nb_orders.setText("Aucune commande");
+            else lbl_nb_orders.setText(orders.size() + " commandes");
         }
         else{
             if(FormValidation.validField(inp_order_id.getText(), idRules).size() > 0){
@@ -467,7 +456,42 @@ public class Panel implements Initializable {
         }
     }
 
-    public void search_orders(){
-
+    public void order_search_state(ActionEvent actionEvent) {
+        search_orders();
     }
+
+    public void order_search_payment(ActionEvent actionEvent) {
+        search_orders();
+    }
+
+    public void order_search_owner(ActionEvent actionEvent) {
+        search_orders();
+    }
+
+    public void search_orders(){
+        String entry = inp_order_owner.getText();
+        int state;
+        int payment;
+
+        switch(cmb_order_state_search.getValue().toString()){
+            case("Non validées"): state = 0; break;
+            case("En cours"): state = 1; break;
+            case("Achevées"): state = 2; break;
+            case("Annulées"): state = 3; break;
+            default: state = -1;
+        }
+        switch(cmb_order_payment_search.getValue().toString()){
+            case("Effectué"): payment = 1; break;
+            case("En attente"): payment = 0; break;
+            default: payment = -1;
+        }
+
+        orders.clear();
+        orders.addAll(OrderDAO.searchOrders(entry, state, payment));
+        if(orders.size() == 0) lbl_nb_orders.setText("Aucune commande");
+        else if(orders.size() == 1) lbl_nb_orders.setText("1 commande");
+        else lbl_nb_orders.setText(orders.size() + " commandes");
+    }
+
+
 }

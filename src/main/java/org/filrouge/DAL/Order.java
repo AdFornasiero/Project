@@ -11,7 +11,9 @@ public class Order {
     private Adress billingAdress;
     private Adress deliveryAdress;
     private int state;
+    private String strState;
     private boolean payed;
+    private String strPayed;
     private Discount discount;
     private int nbproducts;
     private HashMap<Integer, Integer> products;
@@ -34,6 +36,14 @@ public class Order {
         else{
             this.setDiscount(null);
         }
+        switch(state){
+            case 0: this.strState = "Non validée"; break;
+            case 1: this.strState = "En cours"; break;
+            case 2: this.strState = "Achevée"; break;
+            case 3: this.strState = "Annulée"; break;
+        }
+        if(payed) this.strPayed = "Effectué";
+        else this.strPayed = "En attente";
     }
 
     public Order() {
@@ -125,5 +135,21 @@ public class Order {
 
     public void setProducts(HashMap<Integer, Integer> products) {
         this.products = products;
+    }
+
+    public String getStrState() {
+        return strState;
+    }
+
+    public void setStrState(String strState) {
+        this.strState = strState;
+    }
+
+    public String getStrPayed() {
+        return strPayed;
+    }
+
+    public void setStrPayed(String strPayed) {
+        this.strPayed = strPayed;
     }
 }
