@@ -12,20 +12,11 @@ public class OrderDAO {
     public static Order getOrder(int id){
         Order order = new Order();
         try {
-            PreparedStatement stmt = db.prepareStatement("select * from orders where orderID = ?");
+            PreparedStatement stmt = db.prepareStatement("select * from orders, users where orderID = ?");
             stmt.setInt(1, id);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
-                order.setId(res.getInt("orderID"));
-                order.setOwner(res.getInt("userID"));
-                order.setPrice(res.getDouble("price"));
-                order.setState(res.getInt("state"));
-                order.setPayed(res.getBoolean("payed"));
-                order.setBillingAdress(AdressDAO.getAdress(res.getInt("billingadress")));
-                order.setDeliveryAdress(AdressDAO.getAdress(res.getInt("deliveryadress")));
-                if(getDiscount(res.getInt("discountID")).getId() != null){
-                    order.setDiscount(getDiscount(res.getInt("discountID")));
-                }
+                order = new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"), res.getDouble("price"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,9 +28,9 @@ public class OrderDAO {
         List<Order> orders = new ArrayList<>();
         try {
             Statement stmt = db.createStatement();
-            ResultSet res = stmt.executeQuery("select * from orders");
+            ResultSet res = stmt.executeQuery("select * from orders, users");
             while(res.next()){
-                orders.add(new Order(res.getInt("orderID"), res.getInt("userID"), res.getDouble("price"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discount")));
+                orders.add(new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"),res.getDouble("price"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,7 +57,7 @@ public class OrderDAO {
     public static Discount getDiscount(int id){
         Discount discount = new Discount();
         try {
-            PreparedStatement stmt = db.prepareStatement("select * from discount where discountID = ?");
+            PreparedStatement stmt = db.prepareStatement("select * from discounts where discountID = ?");
             stmt.setInt(1, id);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
@@ -81,6 +72,11 @@ public class OrderDAO {
             e.printStackTrace();
         }
         return discount;
+    }
+
+    public static Order searchOrder(){
+        Order order = new Order();
+        return order;
     }
 
 }

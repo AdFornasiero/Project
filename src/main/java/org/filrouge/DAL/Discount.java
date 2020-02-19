@@ -4,8 +4,8 @@ public class Discount {
 
     int id;
     String code;
-    int percentValue;
-    int fixedValue;
+    Integer percentValue;
+    Integer fixedValue;
     int minAmount;
     boolean active;
 
@@ -67,5 +67,17 @@ public class Discount {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    @Override
+    public String toString() {
+        String str;
+        if(this.percentValue != null)
+            str = this.code + " (" + this.percentValue + "%)";
+        else if(this.fixedValue != null)
+            str = this.code + " (" + this.percentValue + "%)";
+        else
+            str = this.code;
+        return str;
     }
 }

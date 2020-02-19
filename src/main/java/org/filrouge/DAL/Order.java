@@ -6,6 +6,7 @@ public class Order {
 
     private int id;
     private int owner;
+    private String ownerLogin;
     private double price;
     private Adress billingAdress;
     private Adress deliveryAdress;
@@ -15,16 +16,18 @@ public class Order {
     private int nbproducts;
     private HashMap<Integer, Integer> products;
 
-    public Order(int id, int owner, double price, HashMap<Integer, Integer> products, Adress billingAdress, Adress deliveryAdress, int state, boolean payed, int discount) {
+    public Order(int id, int owner, String ownerLogin, double price, HashMap<Integer, Integer> products, Adress billingAdress, Adress deliveryAdress, int state, boolean payed, int discount) {
         this.id = id;
         this.owner = owner;
+        this.ownerLogin = ownerLogin;
         this.price = price;
         this.billingAdress = billingAdress;
         this.deliveryAdress = deliveryAdress;
         this.state = state;
         this.payed = payed;
         this.products = products;
-        this.nbproducts = products.size();
+        this.nbproducts = 0;
+        products.forEach((product, quantity) -> this.nbproducts = this.nbproducts + quantity);
         if(OrderDAO.getDiscount(discount) != null){
             this.setDiscount(OrderDAO.getDiscount(discount));
         }
@@ -50,6 +53,14 @@ public class Order {
 
     public void setOwner(int owner) {
         this.owner = owner;
+    }
+
+    public String getOwnerLogin() {
+        return ownerLogin;
+    }
+
+    public void setOwnerLogin(String ownerLogin) {
+        this.ownerLogin = ownerLogin;
     }
 
     public double getPrice() {

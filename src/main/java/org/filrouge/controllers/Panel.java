@@ -68,14 +68,15 @@ public class Panel implements Initializable {
     public TextField inp_order_owner;
     public Label lbl_nb_orders;
     public TableColumn<Order, Integer> col_order_id;
-    public TableColumn<Order, Integer> col_order_owner;
+    public TableColumn<Order, String> col_order_ownerLogin;
     public TableColumn<Order, Adress> col_order_billing;
     public TableColumn<Order, Adress> col_order_delivery;
     public TableColumn<Order, Integer> col_order_nbproducts;
     public TableColumn<Order, Double> col_order_price;
     public TableColumn<Order, Discount> col_order_discount;
-    public TableColumn<Order, Boolean> col_order_state;
+    public TableColumn<Order, Integer> col_order_state;
     public TableView<Order> orders_table;
+    public Label orderid_error;
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
@@ -128,7 +129,7 @@ public class Panel implements Initializable {
         product_table.setItems(products);
 
         col_order_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        col_order_owner.setCellValueFactory(new PropertyValueFactory<>("owner"));
+        col_order_ownerLogin.setCellValueFactory(new PropertyValueFactory<>("ownerLogin"));
         col_order_delivery.setCellValueFactory(new PropertyValueFactory<>("deliveryAdress"));
         col_order_billing.setCellValueFactory(new PropertyValueFactory<>("billingAdress"));
         col_order_nbproducts.setCellValueFactory(new PropertyValueFactory<>("nbproducts"));
@@ -145,7 +146,7 @@ public class Panel implements Initializable {
         FormValidation.setMessage("max_length", "C'est un peu trop long");
         FormValidation.setMessage("regex", "Saisie incorrecte");
         FormValidation.setMessage("integer", "Entrez un nombre");
-        FormValidation.setMessage("exists", "Saisie incorrecte");
+        FormValidation.setMessage("exists", "Inexistant");
         FormValidation.setMessage("unique", "Déja utilisée");
     }
 
@@ -428,4 +429,45 @@ public class Panel implements Initializable {
         lbl_add_success.setVisible(false);
     }
 
+
+    public void order_search_id(ActionEvent actionEvent) {
+        search_order();
+    }
+
+    public void order_search_state(ActionEvent actionEvent) {
+        search_orders();
+    }
+
+    public void order_search_payment(ActionEvent actionEvent) {
+        search_orders();
+    }
+
+
+
+    public void order_search_owner(ActionEvent actionEvent) {
+        //search_orders();
+    }
+
+    public void search_order(){
+        String[] idRules = {"integer", "exists(orders.orderID)"};
+        if(inp_order_id.getText().isBlank()){
+            orderid_error.setText("");
+            orders.clear();
+            orders.addAll(OrderDAO.getOrders());
+        }
+        else{
+            if(FormValidation.validField(inp_order_id.getText(), idRules).size() > 0){
+                orderid_error.setText(FormValidation.getFirstMessage());
+            }
+            else{
+                orderid_error.setText("");
+                orders.clear();
+                orders.addAll(OrderDAO.getOrder(Integer.parseInt(inp_order_id.getText())));
+            }
+        }
+    }
+
+    public void search_orders(){
+
+    }
 }
