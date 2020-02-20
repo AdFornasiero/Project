@@ -1,6 +1,6 @@
 package org.filrouge.DAL;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class Order {
 
@@ -16,9 +16,10 @@ public class Order {
     private String strPayed;
     private Discount discount;
     private int nbproducts;
-    private HashMap<Integer, Integer> products;
+    private Map<Integer, Map.Entry<Integer, Boolean>> products;
+    private String strPrice;
 
-    public Order(int id, int owner, String ownerLogin, double price, HashMap<Integer, Integer> products, Adress billingAdress, Adress deliveryAdress, int state, boolean payed, int discount) {
+    public Order(int id, int owner, String ownerLogin, double price, Map<Integer, Map.Entry<Integer, Boolean>> products, Adress billingAdress, Adress deliveryAdress, int state, boolean payed, int discount) {
         this.id = id;
         this.owner = owner;
         this.ownerLogin = ownerLogin;
@@ -29,7 +30,8 @@ public class Order {
         this.payed = payed;
         this.products = products;
         this.nbproducts = 0;
-        products.forEach((product, quantity) -> this.nbproducts = this.nbproducts + quantity);
+        this.strPrice = this.price + "€";
+        products.forEach((product, quantity) -> this.nbproducts = this.nbproducts + quantity.getKey());
         if(OrderDAO.getDiscount(discount) != null){
             this.setDiscount(OrderDAO.getDiscount(discount));
         }
@@ -45,6 +47,10 @@ public class Order {
         if(payed) this.strPayed = "Effectué";
         else this.strPayed = "En attente";
     }
+
+    /*public Map<Integer, Map.Entry<Integer, Boolean>> getProductsOrder(){
+
+    }*/
 
     public Order() {
     }
@@ -129,11 +135,11 @@ public class Order {
         this.nbproducts = nbproducts;
     }
 
-    public HashMap<Integer, Integer> getProducts() {
+    public Map<Integer, Map.Entry<Integer, Boolean>> getProducts() {
         return products;
     }
 
-    public void setProducts(HashMap<Integer, Integer> products) {
+    public void setProducts(Map<Integer, Map.Entry<Integer, Boolean>> products) {
         this.products = products;
     }
 
@@ -151,5 +157,13 @@ public class Order {
 
     public void setStrPayed(String strPayed) {
         this.strPayed = strPayed;
+    }
+
+    public String getStrPrice() {
+        return strPrice;
+    }
+
+    public void setStrPrice(String strPrice) {
+        this.strPrice = strPrice;
     }
 }

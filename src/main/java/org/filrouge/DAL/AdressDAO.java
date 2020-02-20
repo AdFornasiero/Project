@@ -19,6 +19,7 @@ public class AdressDAO {
                 adress.setCity(res.getString("city"));
                 adress.setCountry(res.getString("countries.name"));
                 adress.setOwner(res.getInt("userID"));
+                adress.setCharcode(res.getString("charcode"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

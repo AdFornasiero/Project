@@ -9,8 +9,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import org.filrouge.DAL.*;
+import org.w3c.dom.ls.LSOutput;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.net.URL;
@@ -32,7 +35,7 @@ public class Panel implements Initializable {
     public TableColumn<Product, String> col_product_category;
     public TableColumn<Product, String> col_product_maker;
     public TableColumn<Product, String> col_product_label;
-    public TableColumn<Product, Double> col_product_price;
+    public TableColumn<Product, String> col_product_price;
     public TextField inp_label;
     public TextField inp_reference;
     public ComboBox cmb_category;
@@ -72,11 +75,25 @@ public class Panel implements Initializable {
     public TableColumn<Order, Adress> col_order_billing;
     public TableColumn<Order, Adress> col_order_delivery;
     public TableColumn<Order, Integer> col_order_nbproducts;
-    public TableColumn<Order, Double> col_order_price;
+    public TableColumn<Order, String> col_order_price;
     public TableColumn<Order, Discount> col_order_discount;
     public TableColumn<Order, String> col_order_state;
     public TableView<Order> orders_table;
     public Label orderid_error;
+    public Label lbl_order_owner;
+    public Label lbl_order_id;
+    public Label lbl_order_state;
+    public Label lbl_order_price;
+    public Label lbl_order_payed;
+    public Label lbl_order_discount;
+    public Label lbl_order_billingadress;
+    public Label lbl_order_deliveryadress;
+    public Label lbl_order_deliveryadress1;
+    public Label lbl_order_nbproducts;
+    public ScrollPane order_products_pane;
+    public Label lblid;
+    public Label lblqty;
+    public VBox vbox_base;
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
@@ -92,7 +109,8 @@ public class Panel implements Initializable {
     ObservableList<Supplier> suppliers = FXCollections.observableArrayList();
     ObservableList<Order> orders = FXCollections.observableArrayList();
 
-    Product selected;
+    Product selectedProduct;
+    Order selectedOrder;
     int selectedIndex;
 
     @Override
@@ -124,7 +142,7 @@ public class Panel implements Initializable {
         col_product_reference.setCellValueFactory(new PropertyValueFactory<>("reference"));
         col_product_maker.setCellValueFactory(new PropertyValueFactory<>("maker"));
         col_product_label.setCellValueFactory(new PropertyValueFactory<>("label"));
-        col_product_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        col_product_price.setCellValueFactory(new PropertyValueFactory<>("strPrice"));
         col_product_category.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategory().getLabel()));
         product_table.setItems(products);
 
@@ -133,7 +151,7 @@ public class Panel implements Initializable {
         col_order_delivery.setCellValueFactory(new PropertyValueFactory<>("deliveryAdress"));
         col_order_billing.setCellValueFactory(new PropertyValueFactory<>("billingAdress"));
         col_order_nbproducts.setCellValueFactory(new PropertyValueFactory<>("nbproducts"));
-        col_order_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        col_order_price.setCellValueFactory(new PropertyValueFactory<>("strPrice"));
         col_order_discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
         col_order_state.setCellValueFactory(new PropertyValueFactory<>("strState"));
         orders_table.setItems(orders);
@@ -158,41 +176,41 @@ public class Panel implements Initializable {
     public void product_select(MouseEvent mouseEvent) {
         btn_product_save.setText("Enregistrer");
         if(product_table.getSelectionModel() != null && product_table.getSelectionModel().getSelectedItem() != null) {
-            selected = product_table.getSelectionModel().getSelectedItem();
+            selectedProduct = product_table.getSelectionModel().getSelectedItem();
             selectedIndex = product_table.getSelectionModel().getSelectedIndex();
 
-            inp_label.setText(selected.getLabel());
-            inp_reference.setText(selected.getReference());
-            inp_maker.setText(selected.getMaker());
-            inp_price.setText(String.valueOf(selected.getPrice()));
-            inp_description.setText(selected.getDescription());
-            inp_stock.setText(String.valueOf(selected.getStock()));
-            chk_available.setSelected(selected.isAvailable());
-            inp_stock.setText(String.valueOf(selected.getStock()));
-            lbl_id.setText("ID produit: " + selected.getId());
-            cmb_supplier.setValue(SupplierDAO.getSupplier(selected.getSupplier().getId()).getName());
+            inp_label.setText(selectedProduct.getLabel());
+            inp_reference.setText(selectedProduct.getReference());
+            inp_maker.setText(selectedProduct.getMaker());
+            inp_price.setText(String.valueOf(selectedProduct.getPrice()));
+            inp_description.setText(selectedProduct.getDescription());
+            inp_stock.setText(String.valueOf(selectedProduct.getStock()));
+            chk_available.setSelected(selectedProduct.isAvailable());
+            inp_stock.setText(String.valueOf(selectedProduct.getStock()));
+            lbl_id.setText("ID produit: " + selectedProduct.getId());
+            cmb_supplier.setValue(SupplierDAO.getSupplier(selectedProduct.getSupplier().getId()).getName());
 
-            if (cmb_category.getItems().contains(selected.getCategory().getLabel())) {
-                cmb_category.setValue(selected.getCategory().getLabel());
+            if (cmb_category.getItems().contains(selectedProduct.getCategory().getLabel())) {
+                cmb_category.setValue(selectedProduct.getCategory().getLabel());
             } else {
-                cmb_category.setValue("\t" + selected.getCategory().getLabel());
+                cmb_category.setValue("\t" + selectedProduct.getCategory().getLabel());
             }
 
-            if (selected.getAdddate() != null) {
-                LocalDate adddate = LocalDate.parse(String.valueOf(selected.getAdddate()));
+            if (selectedProduct.getAdddate() != null) {
+                LocalDate adddate = LocalDate.parse(String.valueOf(selectedProduct.getAdddate()));
                 lbl_add_date.setText("Date de création: " + adddate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
             } else {
                 lbl_update_date.setText("Date de création:  -");
             }
 
-            if (selected.getUpdatedate() != null) {
-                LocalDate updatedate = LocalDate.parse(String.valueOf(selected.getUpdatedate()));
+            if (selectedProduct.getUpdatedate() != null) {
+                LocalDate updatedate = LocalDate.parse(String.valueOf(selectedProduct.getUpdatedate()));
                 lbl_update_date.setText("Dernière modification: " + updatedate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
             } else {
                 lbl_update_date.setText("Dernière modification:  -");
             }
 
-            clearErrors();
+            clearProductErrors();
             lbl_update_success.setVisible(false);
         }
     }
@@ -209,18 +227,18 @@ public class Panel implements Initializable {
     public void product_remove(ActionEvent actionEvent) {
 
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
-        confirm.setTitle("Suppression de " + selected.getLabel());
+        confirm.setTitle("Suppression de " + selectedProduct.getLabel());
         confirm.setHeaderText(null);
         confirm.setContentText("Voulez-vous vraiment supprimer ce produit?\nCette opération est irréversible.");
         Optional<ButtonType> btn_confirm = confirm.showAndWait();
 
         if(btn_confirm.get() == ButtonType.OK){
-            if(ProductDAO.removeProduct(selected.getId())){
-                products.remove(selected);
+            if(ProductDAO.removeProduct(selectedProduct.getId())){
+                products.remove(selectedProduct);
             }
             else{
                 Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setTitle("Suppression de " + selected.getLabel());
+                error.setTitle("Suppression de " + selectedProduct.getLabel());
                 error.setContentText("Erreur lors de la suppression du produit. ");
             }
         }
@@ -242,14 +260,14 @@ public class Panel implements Initializable {
         // TEMP
         Supplier s = new Supplier(); s.setId(2);
         if(FormValidation.validFields(values, rules, errorLabels)){
-            id = selected.getId();
+            id = selectedProduct.getId();
             supplier = s.getId();
             label = inp_label.getText();
             reference = inp_reference.getText().toUpperCase();
             maker = inp_maker.getText();
             description = inp_description.getText();
             category = CategoryDAO.searchCategory(String.valueOf(cmb_category.getValue()).trim()).getId();
-            adddate = selected.getAdddate();
+            adddate = selectedProduct.getAdddate();
             updatedate = new Date(System.currentTimeMillis());
             available = chk_available.isSelected();
             stock = Integer.valueOf(inp_stock.getText());
@@ -351,8 +369,8 @@ public class Panel implements Initializable {
         form_title.setText("Ajouter un article");
         btn_product_save.setText("Ajouter");
         btn_product_cancel.setVisible(true);
-        clearFields();
-        clearErrors();
+        clearProductFields();
+        clearProductErrors();
     }
 
     public void cancel(ActionEvent actionEvent) {
@@ -360,8 +378,8 @@ public class Panel implements Initializable {
         form_title.setText("Informations détaillées");
         btn_product_save.setText("Enregistrer");
         btn_product_cancel.setVisible(false);
-        clearErrors();
-        clearFields();
+        clearProductErrors();
+        clearProductFields();
     }
 
     public void label_changed(KeyEvent actionEvent) {
@@ -410,7 +428,7 @@ public class Panel implements Initializable {
 
     }
 
-    public void clearErrors(){
+    public void clearProductErrors(){
         label_error.setText("");
         reference_error.setText("");
         maker_error.setText("");
@@ -419,7 +437,7 @@ public class Panel implements Initializable {
         stock_error.setText("");
     }
 
-    public void clearFields(){
+    public void clearProductFields(){
         inp_label.setText("");
         inp_reference.setText("");
         inp_maker.setText("");
@@ -493,5 +511,36 @@ public class Panel implements Initializable {
         else lbl_nb_orders.setText(orders.size() + " commandes");
     }
 
+    public void order_select(MouseEvent mouseEvent) {
+        List<VBox> productsList = new ArrayList<>();
+        if(orders_table.getSelectionModel() != null && orders_table.getSelectionModel().getSelectedItem() != null) {
+            selectedOrder = orders_table.getSelectionModel().getSelectedItem();
+            lbl_order_id.setText(String.valueOf(selectedOrder.getId()));
+            lbl_order_owner.setText(selectedOrder.getOwnerLogin() + " (" + selectedOrder.getOwner() + ")");
+            lbl_order_state.setText(selectedOrder.getStrState());
+            lbl_order_payed.setText(selectedOrder.getStrPayed());
+            lbl_order_price.setText(selectedOrder.getStrPrice());
+            lbl_order_billingadress.setText(selectedOrder.getBillingAdress().detailedStringAdress());
+            lbl_order_deliveryadress.setText(selectedOrder.getDeliveryAdress().detailedStringAdress());
+            lbl_order_nbproducts.setText(String.valueOf(selectedOrder.getNbproducts()));
+            if(selectedOrder.getDiscount().getCode() == null) lbl_order_discount.setText(" -");
+            else lbl_order_discount.setText(selectedOrder.getDiscount().toString());
 
+            selectedOrder.getProducts().forEach((id, attr) -> {
+                VBox vbox = vbox_base;
+                Product p = ProductDAO.getProduct(id);
+                vbox.getChildren().forEach(node -> {
+                    Label lbl = (Label)node;
+                    switch(lbl.getText()){
+                        case "label": lbl.setText("Article: " + p.getMaker() + " - " + p.getLabel());
+                        case "quantity": lbl.setText("Quantité: " + attr.getKey());
+                        case "delivered": if(attr.getValue()) lbl.setText("Livré: Oui"); else lbl.setText("Livré: Non");
+                    }
+                });
+                vbox.setVisible(true);
+                productsList.add(vbox);
+                order_products_pane.setContent(vbox);
+            });
+        }
+    }
 }

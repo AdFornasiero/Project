@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Adress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Adress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/AdressDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/AdressDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Discount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Discount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +30,7 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -50,7 +47,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../QuizAfpa" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -118,18 +115,18 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2334" y="176" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581598860362" />
-    <state x="-1155" y="82" key="#com.intellij.ide.util.MemberChooser" timestamp="1582136761265">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1582211543921">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1155" y="82" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582136761265" />
     <state x="612" y="184" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1581873282672" />
-    <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582114246462" />
-    <state x="618" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582134892989">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582211543921" />
+    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582188842056">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1147" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581723649456" />
     <state x="618" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834@0.0.1536.834" timestamp="1582134892989" />
-    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581940891337" />
+    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582188842056" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580891241214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -138,35 +135,35 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2505" y="115" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581679342296" />
-    <state x="2660" y="264" key="FileChooserDialogImpl" timestamp="1582118297839">
+    <state x="2660" y="264" key="FileChooserDialogImpl" timestamp="1582191255263">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="117" key="FileChooserDialogImpl/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581724565681" />
-    <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582118297839" />
-    <state width="1877" height="214" key="GridCell.Tab.0.bottom" timestamp="1582154273986">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582191255263" />
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1582213593665">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
     <state width="1493" height="159" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="148" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582118073973" />
-    <state width="1877" height="214" key="GridCell.Tab.0.center" timestamp="1582154273986">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
+    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1582213593665">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
     <state width="1493" height="159" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="148" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582118073973" />
-    <state width="1877" height="214" key="GridCell.Tab.0.left" timestamp="1582154273986">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state width="1877" height="166" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
+    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1582213593665">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
     <state width="1493" height="159" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="148" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582118073973" />
-    <state width="1877" height="214" key="GridCell.Tab.0.right" timestamp="1582154273986">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state width="1877" height="166" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1582213593665">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
     <state width="1493" height="159" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
-    <state width="1877" height="148" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582118073973" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
     <state width="1877" height="351" key="GridCell.Tab.1.bottom" timestamp="1582154273982">
       <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
@@ -191,11 +188,11 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2410" y="176" key="Maven.ArtifactSearchDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580892132114" />
-    <state x="2266" y="76" key="SettingsEditor" timestamp="1581598772040">
+    <state x="2266" y="76" key="SettingsEditor" timestamp="1582200879232">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="61" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1581161547931" />
-    <state x="2266" y="76" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581598772040" />
+    <state x="2266" y="76" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582200879232" />
     <state x="2575" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1581063164152">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -217,5 +214,16 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582038571374" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -8,14 +8,16 @@ public class Adress {
     String city;
     int owner;
     String country;
+    String charcode;
 
-    public Adress(int id, String label, int zipcode, String city, String country, int owner) {
+    public Adress(int id, String label, int zipcode, String city, String country, int owner, String charcode) {
         this.id = id;
         this.label = label;
         this.zipcode = zipcode;
         this.city = city;
         this.owner = owner;
         this.country = country;
+        this.charcode = charcode;
     }
 
     public Adress() {
@@ -69,8 +71,24 @@ public class Adress {
         this.country = country;
     }
 
+    public String getCharcode() {
+        return charcode;
+    }
+
+    public void setCharcode(String charcode) {
+        this.charcode = charcode;
+    }
+
+
     @Override
     public String toString() {
         return label + ", " + city + " (" + zipcode + "), " + country;
+    }
+
+    public String detailedStringAdress(){
+        String str = label + "\n"
+                + zipcode + ",  " + city + "\n" +
+                country + " (" + charcode + ")";
+        return str;
     }
 }

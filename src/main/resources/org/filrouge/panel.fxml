@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="797.0" prefWidth="1273.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.filrouge.controllers.Panel">
+<AnchorPane prefHeight="797.0" prefWidth="1273.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.filrouge.controllers.Panel">
    <children>
       <TabPane blendMode="RED" layoutX="5.0" layoutY="52.0" prefHeight="706.0" prefWidth="1065.0" style="-fx-background-color: f0f0f0;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
          <effect>
@@ -49,12 +39,12 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Label fx:id="lbl_nb_products" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="731.0" layoutY="67.0" prefHeight="18.0" prefWidth="103.0" text="Aucun produit" textAlignment="RIGHT">
+                              <Label fx:id="lbl_nb_products" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="731.0" layoutY="67.0" prefHeight="18.0" prefWidth="103.0" text="Aucun produit" textAlignment="RIGHT" AnchorPane.rightAnchor="16.0">
                                  <font>
                                     <Font name="System Italic" size="11.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="btn_product_add" layoutX="725.0" layoutY="24.0" mnemonicParsing="false" onAction="#btn_add" text="Ajouter un produit" />
+                              <Button fx:id="btn_product_add" layoutX="725.0" layoutY="24.0" mnemonicParsing="false" onAction="#btn_add" text="Ajouter un produit" AnchorPane.rightAnchor="12.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="716.0" prefWidth="437.0">
@@ -197,13 +187,13 @@
                            <children>
                               <AnchorPane prefHeight="57.0" prefWidth="838.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="4.0">
                                  <children>
-                                    <ComboBox fx:id="cmb_order_state_search" layoutX="361.0" layoutY="19.0" onAction="#order_search_state" prefHeight="25.0" prefWidth="115.0" promptText="État" />
-                                    <ComboBox fx:id="cmb_order_payment_search" layoutX="496.0" layoutY="19.0" onAction="#order_search_payment" prefHeight="25.0" prefWidth="106.0" promptText="Paiement" />
+                                    <ComboBox fx:id="cmb_order_state_search" layoutX="384.0" layoutY="19.0" onAction="#order_search_state" prefHeight="25.0" prefWidth="115.0" promptText="État" />
+                                    <ComboBox fx:id="cmb_order_payment_search" layoutX="576.0" layoutY="19.0" onAction="#order_search_payment" prefHeight="25.0" prefWidth="106.0" promptText="Paiement" />
                                     <TextField fx:id="inp_order_id" layoutX="31.0" layoutY="19.0" onAction="#order_search_id" prefHeight="25.0" prefWidth="78.0" />
                                     <Label layoutX="14.0" layoutY="23.0" text="N°" />
                                     <TextField fx:id="inp_order_owner" layoutX="194.0" layoutY="19.0" onAction="#order_search_owner" promptText="(n° ou identifiant)" />
                                     <Label layoutX="159.0" layoutY="23.0" text="Client" />
-                                    <Label fx:id="lbl_nb_orders" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="732.0" layoutY="43.0" text="Aucune commande">
+                                    <Label fx:id="lbl_nb_orders" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="734.0" layoutY="43.0" text="Aucune commande" textAlignment="RIGHT" AnchorPane.rightAnchor="12.0">
                                        <font>
                                           <Font name="System Italic" size="11.0" />
                                        </font>
@@ -213,9 +203,11 @@
                                           <Font size="10.0" />
                                        </font>
                                     </Label>
+                                    <Label layoutX="358.0" layoutY="23.0" text="État" />
+                                    <Label layoutX="520.0" layoutY="22.0" prefHeight="19.0" prefWidth="50.0" text="Paiement" />
                                  </children>
                               </AnchorPane>
-                              <TableView fx:id="orders_table" layoutX="6.0" layoutY="67.0" prefHeight="643.0" prefWidth="838.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="67.0">
+                              <TableView fx:id="orders_table" layoutX="6.0" layoutY="67.0" onMouseClicked="#order_select" prefHeight="643.0" prefWidth="838.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="67.0">
                                  <columns>
                                     <TableColumn fx:id="col_order_id" prefWidth="81.0" text="ID" />
                                     <TableColumn fx:id="col_order_ownerLogin" prefWidth="135.0" text="Client" />
@@ -232,7 +224,144 @@
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="716.0" prefWidth="516.0" />
+                        <AnchorPane prefHeight="716.0" prefWidth="516.0">
+                           <children>
+                              <VBox layoutX="139.0" layoutY="97.0" prefHeight="289.0" prefWidth="412.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
+                                 <children>
+                                    <HBox prefHeight="6.0" prefWidth="412.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="COMMANDE N° ">
+                                             <HBox.margin>
+                                                <Insets bottom="6.0" right="2.0" />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lbl_order_id">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="3.0" prefWidth="416.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Client: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_owner" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="3.0" prefWidth="416.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="État: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_state" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="3.0" prefWidth="416.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Prix total: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_price" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="3.0" prefWidth="416.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="État du paiement: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_payed" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="3.0" prefWidth="416.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Code promo utilisé: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_discount" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="60.0" prefWidth="412.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Adresse de facturation: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_billingadress" prefHeight="65.0" prefWidth="284.0" wrapText="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="60.0" prefWidth="412.0">
+                                       <VBox.margin>
+                                          <Insets bottom="6.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label text="Adresse de livraison: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_deliveryadress" prefHeight="65.0" prefWidth="299.0" wrapText="true" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="3.0" prefWidth="416.0">
+                                       <children>
+                                          <Label text="Nombre de produits: ">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_nbproducts" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <ScrollPane fx:id="order_products_pane" layoutX="126.0" layoutY="438.0" prefHeight="400.0" prefWidth="420.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                                 <content>
+                                    <VBox fx:id="vbox_base" prefHeight="92.0" prefWidth="418.0" visible="false">
+                                       <children>
+                                          <Label fx:id="lblid" text="L'id" />
+                                          <Label fx:id="lblqty" text="La quantité" />
+                                       </children>
+                                    </VBox>
+                                 </content></ScrollPane>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </HBox>
                </content>

@@ -11,6 +11,7 @@ public class Product {
     private double price;
     private Date adddate, updatedate;
     private boolean available;
+    private String strPrice;
 
 
     public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, Date updatedate, boolean available, int stock) {
@@ -26,6 +27,7 @@ public class Product {
         this.updatedate = updatedate;
         this.available = available;
         this.stock = stock;
+        this.strPrice = price + " €";
     }
 
     public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, boolean available, int stock) {
@@ -40,6 +42,7 @@ public class Product {
         this.adddate = adddate;
         this.available = available;
         this.stock = stock;
+        this.strPrice = price + " €";
     }
 
 
@@ -137,6 +140,14 @@ public class Product {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public String getStrPrice() {
+        return strPrice;
+    }
+
+    public void setStrPrice(String strPrice) {
+        this.strPrice = strPrice;
     }
 
     @Override
