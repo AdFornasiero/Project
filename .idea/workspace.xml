@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Adress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Adress.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/AdressDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/AdressDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecom.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
     </list>
@@ -104,6 +100,7 @@
       <workItem from="1582012070806" duration="12885000" />
       <workItem from="1582101900832" duration="10299000" />
       <workItem from="1582149816224" duration="4046000" />
+      <workItem from="1582219781596" duration="7286000" />
     </task>
     <servers />
   </component>
@@ -140,28 +137,28 @@
     </state>
     <state x="-1180" y="117" key="FileChooserDialogImpl/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581724565681" />
     <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582191255263" />
-    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1582213593665">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="214" key="GridCell.Tab.0.bottom" timestamp="1582226419581">
+      <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
+    <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582226419581" />
     <state width="1493" height="159" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
     <state width="1877" height="166" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
-    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1582213593665">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="214" key="GridCell.Tab.0.center" timestamp="1582226419581">
+      <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
+    <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582226419581" />
     <state width="1493" height="159" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
     <state width="1877" height="166" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
-    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1582213593665">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="214" key="GridCell.Tab.0.left" timestamp="1582226419581">
+      <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
+    <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582226419581" />
     <state width="1493" height="159" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
     <state width="1877" height="166" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
-    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1582213593665">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1877" height="214" key="GridCell.Tab.0.right" timestamp="1582226419581">
+      <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582154273986" />
+    <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582226419581" />
     <state width="1493" height="159" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1581879974025" />
     <state width="1877" height="166" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582213593665" />
     <state width="1877" height="351" key="GridCell.Tab.1.bottom" timestamp="1582154273982">
@@ -222,6 +219,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java</url>
           <line>82</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java</url>
+          <line>523</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

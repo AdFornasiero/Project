@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import org.filrouge.DAL.*;
@@ -90,10 +91,12 @@ public class Panel implements Initializable {
     public Label lbl_order_deliveryadress;
     public Label lbl_order_deliveryadress1;
     public Label lbl_order_nbproducts;
-    public ScrollPane order_products_pane;
-    public Label lblid;
+    public VBox order_products_pane;
     public Label lblqty;
+    public Label lbllabel;
+    public Label lbldelivered;
     public VBox vbox_base;
+    int height = 8;
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
@@ -163,6 +166,8 @@ public class Panel implements Initializable {
 
         if(orders.size() == 0) lbl_nb_orders.setText("Aucune commande");
         else lbl_nb_orders.setText(orders.size() + " commandes");
+
+        order_products_pane.setFillWidth(true);
 
         FormValidation.setMessage("required", "Champs obligatoire");
         FormValidation.setMessage("min_length", "Ce n'est pas assez long");
@@ -527,19 +532,33 @@ public class Panel implements Initializable {
             else lbl_order_discount.setText(selectedOrder.getDiscount().toString());
 
             selectedOrder.getProducts().forEach((id, attr) -> {
-                VBox vbox = vbox_base;
+
+                VBox vbox = new VBox(vbox_base);
                 Product p = ProductDAO.getProduct(id);
-                vbox.getChildren().forEach(node -> {
-                    Label lbl = (Label)node;
-                    switch(lbl.getText()){
-                        case "label": lbl.setText("Article: " + p.getMaker() + " - " + p.getLabel());
-                        case "quantity": lbl.setText("Quantité: " + attr.getKey());
-                        case "delivered": if(attr.getValue()) lbl.setText("Livré: Oui"); else lbl.setText("Livré: Non");
-                    }
-                });
-                vbox.setVisible(true);
-                productsList.add(vbox);
-                order_products_pane.setContent(vbox);
+                if(p != null) {
+                    vbox.getChildren().forEach(node -> {
+                        System.out.println(node);
+                        Label lbl = (Label) node;
+                        //lbl.setId(p.getId() + "_" + node.getId());
+                        switch (node.getId()) {
+                            case "lbllabel":
+                                lbl.setText("Article: " + p.getMaker() + " - " + p.getLabel());
+                                break;
+                            case "lblqty":
+                                lbl.setText("Quantité: " + attr.getKey());
+                                break;
+                            case "lbldelivered":
+                                if (attr.getValue()) lbl.setText("Livré: Oui");
+                                else lbl.setText("Livré: Non");
+                                break;
+                        }
+                        System.out.println(((Label) node).getText());
+                    });
+                    vbox.setId(String.valueOf(p.getId()));
+                    vbox.setVisible(true);
+                }
+                System.out.println(vbox.getChildren());
+                order_products_pane.getChildren().add(vbox);
             });
         }
     }
