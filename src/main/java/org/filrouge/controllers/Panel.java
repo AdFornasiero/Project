@@ -89,14 +89,11 @@ public class Panel implements Initializable {
     public Label lbl_order_discount;
     public Label lbl_order_billingadress;
     public Label lbl_order_deliveryadress;
-    public Label lbl_order_deliveryadress1;
     public Label lbl_order_nbproducts;
     public VBox order_products_pane;
-    public Label lblqty;
-    public Label lbllabel;
-    public Label lbldelivered;
-    public VBox vbox_base;
-    int height = 8;
+    public ComboBox cmb_order_state;
+    public ComboBox cmb_order_payed;
+    public TextField inp_order_discount;
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
     String[] referenceRules = {"required", "min_length(4)", "max_length(10)", "regex(^[\\w\\-]+$)"};
@@ -517,7 +514,7 @@ public class Panel implements Initializable {
     }
 
     public void order_select(MouseEvent mouseEvent) {
-        List<VBox> productsList = new ArrayList<>();
+        order_products_pane.getChildren().clear();
         if(orders_table.getSelectionModel() != null && orders_table.getSelectionModel().getSelectedItem() != null) {
             selectedOrder = orders_table.getSelectionModel().getSelectedItem();
             lbl_order_id.setText(String.valueOf(selectedOrder.getId()));
@@ -532,34 +529,22 @@ public class Panel implements Initializable {
             else lbl_order_discount.setText(selectedOrder.getDiscount().toString());
 
             selectedOrder.getProducts().forEach((id, attr) -> {
-
-                VBox vbox = new VBox(vbox_base);
+                Label lbldelivered, lbllabel, lblqty, lblproduct;
                 Product p = ProductDAO.getProduct(id);
                 if(p != null) {
-                    vbox.getChildren().forEach(node -> {
-                        System.out.println(node);
-                        Label lbl = (Label) node;
-                        //lbl.setId(p.getId() + "_" + node.getId());
-                        switch (node.getId()) {
-                            case "lbllabel":
-                                lbl.setText("Article: " + p.getMaker() + " - " + p.getLabel());
-                                break;
-                            case "lblqty":
-                                lbl.setText("Quantité: " + attr.getKey());
-                                break;
-                            case "lbldelivered":
-                                if (attr.getValue()) lbl.setText("Livré: Oui");
-                                else lbl.setText("Livré: Non");
-                                break;
-                        }
-                        System.out.println(((Label) node).getText());
-                    });
-                    vbox.setId(String.valueOf(p.getId()));
-                    vbox.setVisible(true);
+                    lblproduct = new Label("\n\tProduit n°" + p.getId());
+                    lbllabel = new Label("Article:\t" + p.getMaker() + " - " + p.getLabel());
+                    lblqty = new Label("Quantité:  " + attr.getKey());
+                    if (attr.getValue()){
+                        lbldelivered = new Label("Livré:\tOui"); }
+                    else {
+                        lbldelivered = new Label("Livré:\tNon"); }
+                    order_products_pane.getChildren().addAll(new VBox(lblproduct, lbllabel, lblqty, lbldelivered));
                 }
-                System.out.println(vbox.getChildren());
-                order_products_pane.getChildren().add(vbox);
             });
         }
+    }
+
+    public void order_discount_changed(ActionEvent actionEvent) {
     }
 }
