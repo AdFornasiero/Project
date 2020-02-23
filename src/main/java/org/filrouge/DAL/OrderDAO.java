@@ -71,6 +71,26 @@ public class OrderDAO {
         return discount;
     }
 
+    public static Discount getDiscount(String code){
+        Discount discount = new Discount();
+        try {
+            PreparedStatement stmt = db.prepareStatement("select * from discounts where discountID = ?");
+            stmt.setString(1, code);
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                discount.setId(res.getInt("discountID"));
+                discount.setCode(res.getString("code"));
+                discount.setPercentValue(res.getInt("percentvalue"));
+                discount.setFixedValue(res.getInt("fixedvalue"));
+                discount.setMinAmount(res.getInt("minamount"));
+                discount.setActive(res.getBoolean("active"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return discount;
+    }
+
     public static List<Order> searchOrders(String entry, int state, int payed){
         List<Order> orders = new ArrayList<>();
         String query = "select * from orders, users where orders.userID = users.userID ";

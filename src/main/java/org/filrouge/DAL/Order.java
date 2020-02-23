@@ -23,21 +23,21 @@ public class Order {
         this.id = id;
         this.owner = owner;
         this.ownerLogin = ownerLogin;
-        this.price = price;
         this.billingAdress = billingAdress;
         this.deliveryAdress = deliveryAdress;
         this.state = state;
         this.payed = payed;
         this.products = products;
         this.nbproducts = 0;
-        this.strPrice = this.price + "€";
-        products.forEach((product, quantity) -> this.nbproducts = this.nbproducts + quantity.getKey());
+        products.forEach((product, quantity) -> {
+            if(ProductDAO.getProduct(product) != null)
+                this.nbproducts = this.nbproducts + quantity.getKey();
+        });
         if(OrderDAO.getDiscount(discount) != null){
-            this.setDiscount(OrderDAO.getDiscount(discount));
+            this.discount = OrderDAO.getDiscount(discount);
         }
-        else{
-            this.setDiscount(null);
-        }
+        calculatePrice();
+
         switch(state){
             case 0: this.strState = "Non validée"; break;
             case 1: this.strState = "En cours"; break;
@@ -48,9 +48,25 @@ public class Order {
         else this.strPayed = "En attente";
     }
 
-    /*public Map<Integer, Map.Entry<Integer, Boolean>> getProductsOrder(){
+    public void calculatePrice(){
+        price = 0;
+        products.forEach((productId, productAttr) -> {
+            Product p = ProductDAO.getProduct(productId);
+            if(p != null){
+                price = price + productAttr.getKey() * p.getPrice() * (1 - p.getDiscount());
+            }
+        });
+        if(discount.getId() != 0) {
+            if (price >= discount.getMinAmount()) {
+                if (discount.getFixedValue() != 0)
+                    price = price - discount.getFixedValue();
+                else if (discount.getPercentValue() != 0)
+                    price = price * (1 - discount.getPercentValue()/100);
 
-    }*/
+            }
+        }
+        this.strPrice = this.price + "€";
+    }
 
     public Order() {
     }

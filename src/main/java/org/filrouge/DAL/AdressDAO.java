@@ -7,19 +7,20 @@ public class AdressDAO {
     static Connection db = DBConnect.connect();
 
     public static Adress getAdress(int id){
-        Adress adress = new Adress();
+        Adress adress = null;
         try {
-            PreparedStatement stmt = db.prepareStatement("select * from adresses, countries where adressID = ?");
+            PreparedStatement stmt = db.prepareStatement("select * from adresses, countries where adresses.charcode = countries.charcode && adressID = ?");
             stmt.setInt(1, id);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
-                adress.setId(res.getInt("adressID"));
-                adress.setLabel(res.getString("label"));
-                adress.setZipcode(res.getInt("zipcode"));
-                adress.setCity(res.getString("city"));
-                adress.setCountry(res.getString("countries.name"));
-                adress.setOwner(res.getInt("userID"));
-                adress.setCharcode(res.getString("charcode"));
+                adress = new Adress(
+                res.getInt("adressID"),
+                res.getString("label"),
+                res.getInt("zipcode"),
+                res.getString("city"),
+                res.getString("name"),
+                res.getInt("userID"),
+                res.getString("charcode"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -192,7 +192,7 @@ public class FormValidation {
                 stmt = db.prepareStatement(query);
                 stmt.setString(1, value);
                 ResultSet res = stmt.executeQuery();
-                if(!res.next()){
+                if(!res.next() && !value.isBlank()){
                     errors.add("exists");
                 }
             }

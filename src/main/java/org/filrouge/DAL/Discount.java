@@ -82,4 +82,17 @@ public class Discount {
         }
         return str;
     }
+
+    public String getDiscountStrType(){
+        String str = "";
+        if(this.id != 0){
+            if(this.fixedValue != null && this.percentValue != null) {
+                if (this.percentValue != 0)
+                    str = " (-" + this.percentValue + "%)";
+                else if (this.fixedValue != 0)
+                    str = " (-" + this.fixedValue + "€)";
+            }
+        }
+        return str;
+    }
 }

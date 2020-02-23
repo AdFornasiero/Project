@@ -12,9 +12,10 @@ public class Product {
     private Date adddate, updatedate;
     private boolean available;
     private String strPrice;
+    private int discount;
 
 
-    public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, Date updatedate, boolean available, int stock) {
+    public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, Date updatedate, boolean available, int stock, int discount) {
         this.id = id;
         this.supplier = SupplierDAO.getSupplier(supplierID);
         this.label = label;
@@ -28,9 +29,10 @@ public class Product {
         this.available = available;
         this.stock = stock;
         this.strPrice = price + " €";
+        this.discount = discount;
     }
 
-    public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, boolean available, int stock) {
+    public Product(int id, int supplierID, String label, String reference, String maker, double price, int category, String description, Date adddate, boolean available, int stock, int discount) {
         this.id = id;
         this.supplier = SupplierDAO.getSupplier(supplierID);
         this.label = label;
@@ -43,6 +45,7 @@ public class Product {
         this.available = available;
         this.stock = stock;
         this.strPrice = price + " €";
+        this.discount = discount;
     }
 
 
@@ -148,6 +151,14 @@ public class Product {
 
     public void setStrPrice(String strPrice) {
         this.strPrice = strPrice;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     @Override

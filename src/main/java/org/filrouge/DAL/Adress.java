@@ -87,8 +87,7 @@ public class Adress {
 
     public String detailedStringAdress(){
         String str = label + "\n"
-                + zipcode + ",  " + city + "\n" +
-                country + " (" + charcode + ")";
+                + zipcode + " - " + city + ", " + country;
         return str;
     }
 }

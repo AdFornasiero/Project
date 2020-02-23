@@ -25,7 +25,8 @@ public class ProductDAO {
                         res.getDate("adddate"),
                         res.getDate("updatedate"),
                         res.getBoolean("available"),
-                        res.getInt("stock"));
+                        res.getInt("stock"),
+                        res.getInt("discount"));
 
                 list.add(p);
             }
@@ -116,7 +117,8 @@ public class ProductDAO {
                         res.getDate("adddate"),
                         res.getDate("updatedate"),
                         res.getBoolean("available"),
-                        res.getInt("stock"));
+                        res.getInt("stock"),
+                        res.getInt("discount"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -144,7 +146,8 @@ public class ProductDAO {
                         res.getDate("adddate"),
                         res.getDate("updatedate"),
                         res.getBoolean("available"),
-                        res.getInt("stock"));
+                        res.getInt("stock"),
+                        res.getInt("discount"));
 
                 products.add(p);
             }
@@ -176,7 +179,8 @@ public class ProductDAO {
                         res.getDate("adddate"),
                         res.getDate("updatedate"),
                         res.getBoolean("available"),
-                        res.getInt("stock"));
+                        res.getInt("stock"),
+                        res.getInt("discount"));
 
                 products.add(p);
             }
@@ -204,7 +208,8 @@ public class ProductDAO {
                         res.getDate("adddate"),
                         res.getDate("updatedate"),
                         res.getBoolean("available"),
-                        res.getInt("stock"));
+                        res.getInt("stock"),
+                        res.getInt("discount"));
 
                 products.add(p);
             }
