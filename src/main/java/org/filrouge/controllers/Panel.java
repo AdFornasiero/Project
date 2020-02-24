@@ -561,11 +561,10 @@ public class Panel implements Initializable {
             selectedOrder = orders_table.getSelectionModel().getSelectedItem();
             lbl_order_id.setText(String.valueOf(selectedOrder.getId()));
             lbl_order_owner.setText(selectedOrder.getOwnerLogin());
-            cmb_order_payed.setValue(selectedOrder.getStrPayed());
             lbl_order_price.setText(selectedOrder.getStrPrice());
             lbl_order_billingadress.setText(selectedOrder.getBillingAdress().detailedStringAdress());
             lbl_order_deliveryadress.setText(selectedOrder.getDeliveryAdress().detailedStringAdress());
-            lbl_order_nbproducts.setText(String.valueOf(selectedOrder.getNbproducts()));
+            lbl_order_nbproducts.setText(selectedOrder.getNbproducts() + " produits");
             if(selectedOrder.getDiscount().getCode() == null){
                 inp_order_discount.setText("");
                 lbl_order_discount.setText("");
@@ -596,7 +595,6 @@ public class Panel implements Initializable {
             order_products_pane.getChildren().forEach(vbox -> {
                 vbox.setStyle("-fx-background-color: #e8e8e8; -fx-padding: 6px; -fx-font-family: Verdana");
                 VBox.setMargin(vbox, new Insets(8,0,0,0));
-
             });
         }
     }
@@ -604,12 +602,18 @@ public class Panel implements Initializable {
     public void order_discount_changed(ActionEvent actionEvent) {
         String[] discountRules = {"exists(discounts.code)"};
         if(FormValidation.validField(inp_order_discount.getText(), discountRules).size() == 0){
-            // UPDATE ORDER
-            selectedOrder.calculatePrice();
+            order_update();
             lbl_order_discount.setText(selectedOrder.getDiscount().getDiscountStrType());
             lbl_order_price.setText(selectedOrder.getStrPrice());
         }
         lbl_dicount_error.setText(FormValidation.getFirstMessage());
         lbl_order_discount.setText("");
+    }
+
+    public void order_update(){
+        selectedOrder.setDiscount(OrderDAO.getDiscount(inp_order_discount.getText()));
+        selectedOrder.setStrState(cmb_order_state.getValue().toString());
+        selectedOrder.setStrPayed(cmb_order_payed.getValue().toString());
+
     }
 }

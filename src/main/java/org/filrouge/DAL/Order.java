@@ -1,5 +1,6 @@
 package org.filrouge.DAL;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 public class Order {
@@ -65,7 +66,8 @@ public class Order {
 
             }
         }
-        this.strPrice = this.price + "€";
+        DecimalFormat df = new DecimalFormat("#.##");
+        this.strPrice = df.format(this.price) + "€";
     }
 
     public Order() {
@@ -125,6 +127,12 @@ public class Order {
 
     public void setState(int state) {
         this.state = state;
+        switch(state){
+            case 0: this.strState = "Non validée"; break;
+            case 1: this.strState = "En cours"; break;
+            case 2: this.strState = "Achevée"; break;
+            case 3: this.strState = "Annulée"; break;
+        }
     }
 
     public boolean isPayed() {
@@ -133,6 +141,8 @@ public class Order {
 
     public void setPayed(boolean payed) {
         this.payed = payed;
+        if(payed) this.strPayed = "Effectué";
+        else this.strPayed = "En attente";
     }
 
     public Discount getDiscount() {
@@ -141,6 +151,7 @@ public class Order {
 
     public void setDiscount(Discount discount) {
         this.discount = discount;
+        calculatePrice();
     }
 
     public int getNbproducts() {
@@ -157,6 +168,7 @@ public class Order {
 
     public void setProducts(Map<Integer, Map.Entry<Integer, Boolean>> products) {
         this.products = products;
+        calculatePrice();
     }
 
     public String getStrState() {
@@ -165,6 +177,12 @@ public class Order {
 
     public void setStrState(String strState) {
         this.strState = strState;
+        switch(strState){
+            case "Non validée": this.state = 0; break;
+            case "En cours": this.state = 1; break;
+            case "Achevée": this.state = 2; break;
+            case "Annulée": this.state = 3; break;
+        }
     }
 
     public String getStrPayed() {
@@ -173,6 +191,8 @@ public class Order {
 
     public void setStrPayed(String strPayed) {
         this.strPayed = strPayed;
+        if(strPayed.equals("Effectué")) this.payed = true;
+        else if(strPayed.equals("En attente")) this.payed = false;
     }
 
     public String getStrPrice() {

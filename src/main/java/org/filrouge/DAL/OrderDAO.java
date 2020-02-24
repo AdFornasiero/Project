@@ -1,5 +1,6 @@
 package org.filrouge.DAL;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.*;
 
@@ -113,4 +114,37 @@ public class OrderDAO {
         return orders;
     }
 
+    public static boolean updateOrder(Order o){
+        boolean updated = false;
+        try {
+            PreparedStatement stmt = db.prepareStatement("update orders set price = ?, deliveryadress = ?, billingadress = ?, state = ?, payed = ?, discountID = ? where orderID = ?");
+            PreparedStatement stmtDelProducts = db.prepareStatement("delete from madeof where orderID = ?");
+            PreparedStatement stmtAddProduct = db.prepareStatement("insert into madeof (orderID, productID, quantity, delivered) values (?,?,?,?)");
+            stmt.setDouble(1, o.getPrice());
+            stmt.setInt(2, o.getDeliveryAdress().getId());
+            stmt.setInt(3, o.getBillingAdress().getId());
+            stmt.setInt(4, o.getState());
+            stmt.setBoolean(5, o.isPayed());
+            stmt.setInt(6, o.getDiscount().getId());
+            stmt.setInt(7, o.getId());
+            if(stmt.executeUpdate() != 0){
+                updated = true;
+            }
+            stmtDelProducts.setInt(1, o.getId());
+            stmtAddProduct.setInt(1, o.getId());
+            o.getProducts().forEach((id, details) -> {
+                try {
+                    stmtAddProduct.setInt(2, id);
+                    stmtAddProduct.setInt(3, details.getKey());
+                    stmtAddProduct.setBoolean(4, details.getValue());
+                    stmtAddProduct.execute();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return updated;
+    }
 }
