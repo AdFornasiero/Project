@@ -53,18 +53,19 @@ public class ProductDAO {
     public static boolean updateProduct(Product p){
         boolean updated = false;
         try {
-            PreparedStatement stmt = db.prepareStatement("update products set label = ?, reference = ?, maker = ?, ptprice = ?, description = ?, stock = ?, updatedate = ?, available = ?, supplierID = ?, categoryID = ? where productID = ?");
+            PreparedStatement stmt = db.prepareStatement("update products set label = ?, reference = ?, maker = ?, ptprice = ?, discount = ?, description = ?, stock = ?, updatedate = ?, available = ?, supplierID = ?, categoryID = ? where productID = ?");
             stmt.setString(1, p.getLabel());
             stmt.setString(2, p.getReference());
             stmt.setString(3, p.getMaker());
             stmt.setDouble(4, p.getPrice());
-            stmt.setString(5, p.getDescription());
-            stmt.setInt(6, p.getStock());
-            stmt.setDate(7, p.getUpdatedate());
-            stmt.setBoolean(8, p.isAvailable());
-            stmt.setInt(9, p.getSupplier().getId());
-            stmt.setInt(10, p.getCategory().getId());
-            stmt.setInt(11, p.getId());
+            stmt.setInt(5, p.getDiscount());
+            stmt.setString(6, p.getDescription());
+            stmt.setInt(7, p.getStock());
+            stmt.setDate(8, p.getUpdatedate());
+            stmt.setBoolean(9, p.isAvailable());
+            stmt.setInt(10, p.getSupplier().getId());
+            stmt.setInt(11, p.getCategory().getId());
+            stmt.setInt(12, p.getId());
 
             if(stmt.executeUpdate() == 1){
                 updated = true;
@@ -78,17 +79,18 @@ public class ProductDAO {
     public static boolean addProduct(Product p){
         boolean added = false;
         try {
-            PreparedStatement stmt = db.prepareStatement("insert into products (label, reference, maker, ptprice, description, stock, adddate, available, supplierID, categoryID) values (?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement stmt = db.prepareStatement("insert into products (label, reference, maker, ptprice, discount, description, stock, adddate, available, supplierID, categoryID) values (?,?,?,?,?,?,?,?,?,?,?)");
             stmt.setString(1, p.getLabel());
             stmt.setString(2, p.getReference());
             stmt.setString(3, p.getMaker());
             stmt.setDouble(4, p.getPrice());
-            stmt.setString(5, p.getDescription());
-            stmt.setInt(6, p.getStock());
-            stmt.setDate(7, p.getAdddate());
-            stmt.setBoolean(8, p.isAvailable());
-            stmt.setInt(9, p.getSupplier().getId());
-            stmt.setInt(10, p.getCategory().getId());
+            stmt.setInt(5, p.getDiscount());
+            stmt.setString(6, p.getDescription());
+            stmt.setInt(7, p.getStock());
+            stmt.setDate(8, p.getAdddate());
+            stmt.setBoolean(9, p.isAvailable());
+            stmt.setInt(10, p.getSupplier().getId());
+            stmt.setInt(11, p.getCategory().getId());
 
             if(stmt.executeUpdate() == 1){
                 added = true;

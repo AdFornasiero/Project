@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/productLine.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/FormValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/FormValidation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +29,7 @@
       <list>
         <option value="Class" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -50,13 +61,15 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\resources" />
+      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\resources\org\filrouge" />
+      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java\org\filrouge\controllers" />
+      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java\org\filrouge\DAL" />
       <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\resources\org\filrouge" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java\org\filrouge\controllers" />
-      <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\java" />
     </key>
   </component>
   <component name="RunManager">
@@ -110,6 +123,7 @@
       <workItem from="1582472269498" duration="11049000" />
       <workItem from="1582532240995" duration="12000" />
       <workItem from="1582533356056" duration="10844000" />
+      <workItem from="1582616955849" duration="13456000" />
     </task>
     <servers />
   </component>
@@ -121,12 +135,12 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2334" y="176" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581598860362" />
-    <state x="612" y="184" key="#com.intellij.ide.util.MemberChooser" timestamp="1582474221714">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1582633058996">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1155" y="82" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582136761265" />
     <state x="612" y="184" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1582474221714" />
-    <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582211543921" />
+    <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582633058996" />
     <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582188842056">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -146,30 +160,30 @@
     </state>
     <state x="-1180" y="117" key="FileChooserDialogImpl/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581724565681" />
     <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582191255263" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1582558717733">
+    <state width="1877" height="323" key="GridCell.Tab.0.bottom" timestamp="1582645063552">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721119" />
     <state width="1493" height="147" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582558717733" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1582558717732">
+    <state width="1877" height="323" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063552" />
+    <state width="1877" height="323" key="GridCell.Tab.0.center" timestamp="1582645063551">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582558717732" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1582558717732">
+    <state width="1877" height="323" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063551" />
+    <state width="1877" height="323" key="GridCell.Tab.0.left" timestamp="1582645063551">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582558717732" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1582558717732">
+    <state width="1877" height="323" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063551" />
+    <state width="1877" height="323" key="GridCell.Tab.0.right" timestamp="1582645063551">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582558717732" />
+    <state width="1877" height="323" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063551" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1582558717733">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -216,26 +230,15 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2586" y="149" key="refactoring.ChangeSignatureDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581072235169" />
-    <state x="-1304" y="92" width="672" height="684" key="run.anything.popup" timestamp="1582311210999">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state x="2536" y="240" width="672" height="677" key="run.anything.popup" timestamp="1582636095797">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1304" y="92" width="672" height="684" key="run.anything.popup/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582311210999" />
-    <state x="2536" y="240" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581601664044" />
+    <state x="2536" y="240" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582636095797" />
     <state x="-1297" y="77" width="672" height="685" key="search.everywhere.popup" timestamp="1582310270580">
       <screen x="-1920" y="-150" width="1920" height="1050" />
     </state>
     <state x="-1297" y="77" width="672" height="685" key="search.everywhere.popup/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582310270580" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582038571374" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

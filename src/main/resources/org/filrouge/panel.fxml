@@ -6,25 +6,8 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="797.0" prefWidth="1273.0" style="-fx-font-family: Verdana;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.filrouge.controllers.Panel">
+<AnchorPane prefHeight="887.0" prefWidth="1425.0" style="-fx-font-family: Verdana;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.filrouge.controllers.Panel">
    <children>
       <TabPane blendMode="RED" layoutX="5.0" layoutY="52.0" prefHeight="706.0" prefWidth="1065.0" style="-fx-background-color: f0f0f0;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
          <effect>
@@ -81,8 +64,8 @@
                                           <Insets bottom="1.0" left="2.0" top="12.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_label" layoutX="103.0" layoutY="134.0" onKeyReleased="#label_changed" prefHeight="25.0" prefWidth="181.0" />
-                                    <Label fx:id="label_error" textFill="#ae0000">
+                                    <TextField fx:id="inp_product_label" layoutX="103.0" layoutY="134.0" onKeyReleased="#label_changed" prefHeight="25.0" prefWidth="181.0" />
+                                    <Label fx:id="product_label_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -92,8 +75,8 @@
                                           <Insets bottom="1.0" left="2.0" top="4.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_reference" layoutX="95.0" layoutY="174.0" onKeyReleased="#reference_changed" prefHeight="25.0" prefWidth="181.0" />
-                                    <Label fx:id="reference_error" textFill="#ae0000">
+                                    <TextField fx:id="inp_product_reference" layoutX="95.0" layoutY="174.0" onKeyReleased="#reference_changed" prefHeight="25.0" prefWidth="181.0" />
+                                    <Label fx:id="product_reference_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -103,8 +86,8 @@
                                           <Insets bottom="1.0" left="2.0" top="4.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <ComboBox fx:id="cmb_category" onAction="#category_changed" prefHeight="25.0" prefWidth="429.0" />
-                                    <Label fx:id="category_error" textFill="#ae0000">
+                                    <ComboBox fx:id="cmb_product_category" onAction="#category_changed" prefHeight="25.0" prefWidth="429.0" />
+                                    <Label fx:id="product_category_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -114,30 +97,59 @@
                                           <Insets bottom="1.0" left="2.0" top="4.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_maker" layoutX="83.0" layoutY="213.0" onKeyReleased="#maker_changed" prefHeight="25.0" prefWidth="181.0" />
-                                    <Label fx:id="maker_error" textFill="#ae0000">
+                                    <TextField fx:id="inp_product_maker" layoutX="83.0" layoutY="213.0" onKeyReleased="#maker_changed" prefHeight="25.0" prefWidth="181.0" />
+                                    <Label fx:id="product_maker_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="14.0" layoutY="217.0" prefHeight="17.0" prefWidth="69.0" text="Prix">
-                                       <VBox.margin>
-                                          <Insets bottom="1.0" left="2.0" top="4.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <TextField fx:id="inp_price" layoutX="76.0" layoutY="261.0" onKeyReleased="#price_changed" prefHeight="25.0" prefWidth="181.0" />
-                                    <Label fx:id="price_error" textFill="#ae0000">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Label>
+                                    <HBox>
+                                       <children>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="217.0" prefHeight="15.0" prefWidth="134.0" text="Prix">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="2.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="inp_product_price" layoutX="76.0" layoutY="261.0" onKeyReleased="#price_changed" prefHeight="25.0" prefWidth="181.0" />
+                                                <Label fx:id="product_price_error" textFill="#ae0000">
+                                                   <font>
+                                                      <Font size="10.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="2.0" right="32.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="217.0" prefHeight="15.0" prefWidth="134.0" text="Promotion (%)">
+                                                   <VBox.margin>
+                                                      <Insets bottom="1.0" left="2.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <TextField fx:id="inp_product_discount" layoutX="76.0" layoutY="261.0" onKeyReleased="#discount_changed" prefHeight="25.0" prefWidth="181.0" />
+                                                <Label fx:id="product_discount_error" textFill="#ae0000">
+                                                   <font>
+                                                      <Font size="10.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets left="32.0" right="2.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
                                     <Label prefHeight="17.0" prefWidth="69.0" text="Description">
                                        <VBox.margin>
                                           <Insets bottom="1.0" left="2.0" top="4.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextArea fx:id="inp_description" minHeight="-Infinity" onKeyReleased="#description_changed" prefHeight="83.0" prefWidth="282.0" snapToPixel="false" text="Salut" wrapText="true" />
-                                    <Label fx:id="description_error" textFill="#ae0000">
+                                    <TextArea fx:id="inp_product_description" minHeight="-Infinity" onKeyReleased="#description_changed" prefHeight="83.0" prefWidth="282.0" snapToPixel="false" text="Salut" wrapText="true" />
+                                    <Label fx:id="product_description_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -153,8 +165,8 @@
                                           <Insets bottom="1.0" left="2.0" top="12.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField fx:id="inp_stock" onKeyReleased="#stock_changed" prefHeight="25.0" prefWidth="74.0" />
-                                    <Label fx:id="stock_error" textFill="#ae0000">
+                                    <TextField fx:id="inp_product_stock" onKeyReleased="#stock_changed" prefHeight="25.0" prefWidth="74.0" />
+                                    <Label fx:id="product_stock_error" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -180,12 +192,12 @@
                               <Button fx:id="btn_product_save" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="318.0" layoutY="665.0" mnemonicParsing="false" onAction="#product_save" text="Enregistrer" wrapText="true" />
                               <Button fx:id="btn_product_cancel" layoutX="238.0" layoutY="665.0" mnemonicParsing="false" onAction="#cancel" text="Annuler" wrapText="true" />
                               <CheckBox fx:id="chk_available" layoutX="316.0" layoutY="631.0" mnemonicParsing="false" text="Disponible" />
-                              <Label fx:id="lbl_update_success" layoutX="14.0" layoutY="22.0" text="Modifications effectuées" textFill="#49ab36" visible="false">
+                              <Label fx:id="lbl_update_success" layoutX="268.0" layoutY="705.0" text="Modifications effectuées" textFill="#49ab36" visible="false">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbl_add_success" layoutX="14.0" layoutY="22.0" text="Article ajouté" textFill="#49ab36" visible="false">
+                              <Label fx:id="lbl_add_success" layoutX="320.0" layoutY="705.0" text="Article ajouté" textFill="#49ab36" visible="false">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>

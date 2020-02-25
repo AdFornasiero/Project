@@ -1,5 +1,6 @@
 package org.filrouge.DAL;
 
+import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.Map;
 
@@ -19,11 +20,13 @@ public class Order {
     private int nbproducts;
     private Map<Integer, Map.Entry<Integer, Boolean>> products;
     private String strPrice;
+    private Date date;
 
-    public Order(int id, int owner, String ownerLogin, double price, Map<Integer, Map.Entry<Integer, Boolean>> products, Adress billingAdress, Adress deliveryAdress, int state, boolean payed, int discount) {
+    public Order(int id, int owner, String ownerLogin, Date date, Map<Integer, Map.Entry<Integer, Boolean>> products, Adress billingAdress, Adress deliveryAdress, int state, boolean payed, int discount) {
         this.id = id;
         this.owner = owner;
         this.ownerLogin = ownerLogin;
+        this.date = date;
         this.billingAdress = billingAdress;
         this.deliveryAdress = deliveryAdress;
         this.state = state;
@@ -54,7 +57,7 @@ public class Order {
         products.forEach((productId, productAttr) -> {
             Product p = ProductDAO.getProduct(productId);
             if(p != null){
-                price = price + productAttr.getKey() * p.getPrice() * (1 - p.getDiscount());
+                price = price + productAttr.getKey() * p.getPrice() * (100 - p.getDiscount())/100;
             }
         });
         if(discount.getId() != 0) {
@@ -201,5 +204,13 @@ public class Order {
 
     public void setStrPrice(String strPrice) {
         this.strPrice = strPrice;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

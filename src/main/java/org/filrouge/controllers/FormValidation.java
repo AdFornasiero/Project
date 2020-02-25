@@ -217,7 +217,7 @@ public class FormValidation {
                 stmt = db.prepareStatement(query);
                 stmt.setString(1, value);
                 ResultSet res = stmt.executeQuery();
-                if(res.next()){
+                if(res.next() && !value.isBlank()){
                     errors.add("unique");
                 }
             }
@@ -249,7 +249,8 @@ public class FormValidation {
             Long.parseLong(value);
         }
         catch(Exception e){
-            errors.add("integer");
+            if(!value.isBlank())
+                errors.add("integer");
         }
     }
 

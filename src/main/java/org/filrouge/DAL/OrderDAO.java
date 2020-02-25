@@ -15,7 +15,7 @@ public class OrderDAO {
             stmt.setInt(1, id);
             ResultSet res = stmt.executeQuery();
             if(res.next()){
-                order = new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"), res.getDouble("price"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID"));
+                order = new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"), res.getDate("date"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class OrderDAO {
             Statement stmt = db.createStatement();
             ResultSet res = stmt.executeQuery("select * from orders, users where orders.userID = users.userID order by orderID");
             while(res.next()){
-                orders.add(new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"),res.getDouble("price"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID")));
+                orders.add(new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"), res.getDate("date"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -106,7 +106,7 @@ public class OrderDAO {
             Statement stmt = db.createStatement();
             ResultSet res = stmt.executeQuery(query);
             while (res.next()){
-                orders.add(new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"),res.getDouble("price"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID")));
+                orders.add(new Order(res.getInt("orderID"), res.getInt("userID"), res.getString("login"),res.getDate("date"), getOrderProducts(res.getInt("orderID")), AdressDAO.getAdress(res.getInt("billingadress")), AdressDAO.getAdress(res.getInt("deliveryadress")), res.getInt("state"), res.getBoolean("payed"), res.getInt("discountID")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -117,7 +117,7 @@ public class OrderDAO {
     public static boolean updateOrder(Order o){
         boolean updated = false;
         try {
-            PreparedStatement stmt = db.prepareStatement("update orders set price = ?, deliveryadress = ?, billingadress = ?, state = ?, payed = ?, discountID = ? where orderID = ?");
+            PreparedStatement stmt = db.prepareStatement("update orders set price = ?, deliveryadress = ?, billingadress = ?, state = ?, payed = ?, discountID = ?, date = ? where orderID = ?");
             PreparedStatement stmtDelProducts = db.prepareStatement("delete from madeof where orderID = ?");
             PreparedStatement stmtAddProduct = db.prepareStatement("insert into madeof (orderID, productID, quantity, delivered) values (?,?,?,?)");
             stmt.setDouble(1, o.getPrice());
@@ -126,7 +126,8 @@ public class OrderDAO {
             stmt.setInt(4, o.getState());
             stmt.setBoolean(5, o.isPayed());
             stmt.setInt(6, o.getDiscount().getId());
-            stmt.setInt(7, o.getId());
+            stmt.setDate(7, o.getDate());
+            stmt.setInt(8, o.getId());
             if(stmt.executeUpdate() != 0){
                 updated = true;
             }
