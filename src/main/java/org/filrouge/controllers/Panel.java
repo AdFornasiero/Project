@@ -7,13 +7,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
+import org.controlsfx.control.textfield.TextFields;
+import org.controlsfx.glyphfont.FontAwesome;
+import org.controlsfx.glyphfont.GlyphFont;
+import org.controlsfx.glyphfont.GlyphFontRegistry;
 import org.filrouge.DAL.*;
 
 import java.io.IOException;
@@ -147,6 +150,7 @@ public class Panel implements Initializable {
         cmb_category_search.setItems(categories);
         cmb_product_category.setItems(categories);
         cmb_category_search.setValue("Sélectionnez une catégorie");
+        String[] azer = {"tamere", "tonpere", "tasoeur", "tagrandmere"};
 
         suppliers.addAll(SupplierDAO.getSuppliers());
         cmb_supplier.setItems(suppliers);
@@ -201,6 +205,14 @@ public class Panel implements Initializable {
         FormValidation.setMessage("unique", "Déja utilisée");
         FormValidation.setMessage("min", "Entrez un plus grand nombre");
         FormValidation.setMessage("max", "C'est un peu trop grand");
+
+        //inp_order_discount = TextFields.createClearableTextField();
+        List<String> discountList = new ArrayList<>();
+        OrderDAO.getDiscounts().forEach(discount -> discountList.add(discount.toString()));
+        TextFields.bindAutoCompletion(inp_order_discount, discountList);
+        GlyphFont fontAwesome = GlyphFontRegistry.font("FontAwesome");
+
+        btn_product_save.setGraphic(fontAwesome.create(FontAwesome.Glyph.GAMEPAD));
     }
 
     // On click on products table
@@ -623,21 +635,21 @@ public class Panel implements Initializable {
         }
     }
 
-    public void order_discount_changed(ActionEvent actionEvent) {
-        String[] discountRules = {"exists(discounts.code)"};
-        if(FormValidation.validField(inp_order_discount.getText(), discountRules).size() == 0){
-            order_update();
-            lbl_order_discount.setText(selectedOrder.getDiscount().getDiscountStrType());
-            lbl_order_price.setText(selectedOrder.getStrPrice());
-        }
-        lbl_dicount_error.setText(FormValidation.getFirstMessage());
-        lbl_order_discount.setText("");
-    }
-
     public void order_update(){
         selectedOrder.setDiscount(OrderDAO.getDiscount(inp_order_discount.getText()));
         selectedOrder.setStrState(cmb_order_state.getValue().toString());
         selectedOrder.setStrPayed(cmb_order_payed.getValue().toString());
 
+    }
+
+    public void order_discount_changed(ActionEvent actionEvent) {
+        String[] discountRules = {"exists(discounts.code)"};
+        if(FormValidation.validField(inp_order_discount.getText(), discountRules).size() == 0){
+            //order_update();
+            lbl_order_discount.setText(selectedOrder.getDiscount().getDiscountStrType());
+            lbl_order_price.setText(selectedOrder.getStrPrice());
+        }
+        lbl_dicount_error.setText(FormValidation.getFirstMessage());
+        lbl_order_discount.setText("");
     }
 }

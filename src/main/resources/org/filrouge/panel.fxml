@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="887.0" prefWidth="1425.0" style="-fx-font-family: Verdana;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.filrouge.controllers.Panel">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-font-family: Verdana;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.filrouge.controllers.Panel">
    <children>
       <TabPane blendMode="RED" layoutX="5.0" layoutY="52.0" prefHeight="706.0" prefWidth="1065.0" style="-fx-background-color: f0f0f0;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
          <effect>
@@ -255,161 +256,146 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="716.0" prefWidth="516.0">
                            <children>
-                              <VBox layoutX="139.0" layoutY="97.0" prefHeight="315.0" prefWidth="412.0" style="-fx-border-style: solid inside; -fx-border-color: #d0d6db; -fx-border-width: 1; -fx-padding: 4;" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
+                              <VBox layoutX="4.0" layoutY="16.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                  <children>
-                                    <HBox prefHeight="6.0" prefWidth="412.0">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
+                                    <GridPane prefHeight="373.0" prefWidth="502.0" HBox.hgrow="ALWAYS">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="117.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="10.0" prefWidth="385.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                          <RowConstraints fillHeight="false" maxHeight="105.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+                                          <RowConstraints fillHeight="false" maxHeight="120.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                        <children>
-                                          <Label fx:id="lbl_order_id_display" prefHeight="32.0" prefWidth="33.0" text="n° ">
+                                          <Label fx:id="lbl_order_discount_display" prefHeight="15.0" prefWidth="87.0" text="Code promo: " GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <HBox.margin>
                                                 <Insets right="2.0" />
                                              </HBox.margin>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </Label>
-                                          <Label fx:id="lbl_order_id" prefHeight="32.0" prefWidth="88.0">
-                                             <font>
-                                                <Font size="22.0" />
-                                             </font>
+                                          <Label fx:id="lbl_order_paiement_display" prefHeight="24.0" prefWidth="70.0" text="Paiement:" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </Label>
-                                          <Label fx:id="lbl_order_customer_display" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="54.0" text="Client: ">
+                                          <Label fx:id="lbl_order_billingaddress_display" prefHeight="46.0" prefWidth="150.0" text="Adresse de facturation: " wrapText="true" GridPane.rowIndex="5" GridPane.valignment="TOP" HBox.hgrow="ALWAYS">
                                              <HBox.margin>
                                                 <Insets right="2.0" />
                                              </HBox.margin>
-                                             <padding>
-                                                <Insets left="4.0" />
-                                             </padding>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
                                           </Label>
-                                          <Label fx:id="lbl_order_owner" prefHeight="32.0" prefWidth="172.0" wrapText="true">
-                                             <font>
-                                                <Font size="18.0" />
-                                             </font></Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="1.0" prefWidth="412.0">
-                                       <VBox.margin>
-                                          <Insets top="8.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox fillHeight="false" prefHeight="30.0" prefWidth="412.0">
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                       <children>
-                                          <Label fx:id="lbl_order_price_display" prefHeight="22.0" prefWidth="69.0" text="Prix total: ">
+                                          <Label fx:id="lbl_order_deliveryadress_display" prefHeight="46.0" prefWidth="136.0" text="Adresse de livraison: " wrapText="true" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                                             <HBox.margin>
+                                                <Insets right="2.0" />
+                                             </HBox.margin>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_state_display" prefHeight="24.0" prefWidth="38.0" text="État: " GridPane.rowIndex="2" GridPane.valignment="TOP">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label fx:id="lbl_order_price_display" prefHeight="24.0" prefWidth="69.0" text="Prix total: " GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <HBox.margin>
                                                 <Insets right="8.0" />
                                              </HBox.margin>
-                                             <padding>
-                                                <Insets left="4.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label fx:id="lbl_order_price" prefHeight="31.0" prefWidth="146.0">
-                                             <font>
-                                                <Font name="System Bold" size="16.0" />
-                                             </font></Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox>
-                                       <children>
-                                          <Label fx:id="lbl_order_state_display" prefHeight="26.0" prefWidth="46.0" text="État: ">
-                                             <padding>
-                                                <Insets left="4.0" />
-                                             </padding>
-                                          </Label>
-                                          <ComboBox fx:id="cmb_order_state" minWidth="-Infinity" prefHeight="23.0" prefWidth="136.0" />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="8.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox>
-                                       <children>
-                                          <Label fx:id="lbl_order_paiement_display" prefHeight="26.0" prefWidth="88.0" text="Paiement:">
-                                             <padding>
-                                                <Insets left="4.0" />
-                                             </padding>
-                                          </Label>
-                                          <ComboBox fx:id="cmb_order_payed" minWidth="-Infinity" prefHeight="24.0" prefWidth="146.0" />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <HBox fillHeight="false">
-                                       <children>
-                                          <Label fx:id="lbl_order_discount_display" prefHeight="23.0" prefWidth="93.0" text="Code promo: ">
-                                             <HBox.margin>
-                                                <Insets right="2.0" />
-                                             </HBox.margin>
-                                             <padding>
-                                                <Insets left="4.0" />
-                                             </padding>
-                                          </Label>
-                                          <TextField fx:id="inp_order_discount" minWidth="-Infinity" onAction="#order_discount_changed" prefHeight="23.0" prefWidth="137.0" />
-                                          <Label fx:id="lbl_order_discount" prefHeight="24.0" prefWidth="152.0" textOverrun="CLIP" HBox.hgrow="ALWAYS">
-                                             <HBox.margin>
+                                             <VBox.margin>
                                                 <Insets />
-                                             </HBox.margin>
+                                             </VBox.margin>
                                           </Label>
+                                          <Label fx:id="lbl_order_id_display" prefHeight="32.0" prefWidth="23.0" text="n° " GridPane.valignment="TOP" />
+                                          <AnchorPane prefHeight="0.0" prefWidth="385.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <Label fx:id="lbl_order_customer_display" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="54.0" text="Client: ">
+                                                   <HBox.margin>
+                                                      <Insets right="2.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets left="4.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label fx:id="lbl_dicount_error1" layoutX="68.0" layoutY="35.0" text="err" textFill="#ae0000">
+                                                   <font>
+                                                      <Font name="System Italic" size="10.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="inp_order_owner" editable="false" layoutX="68.0" prefHeight="35.0" prefWidth="221.0" HBox.hgrow="ALWAYS">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                             </children>
+                                          </AnchorPane>
+                                          <Label fx:id="lbl_order_price" prefHeight="30.0" prefWidth="160.0" text="64,90€" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="cmb_order_state" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                          <ComboBox fx:id="cmb_order_payed" minWidth="-Infinity" prefHeight="24.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                          <VBox GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <children>
+                                                <TextArea fx:id="inp_order_billingadress" prefHeight="50.0" prefWidth="373.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <Label fx:id="lbl_dicount_error2" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <font>
+                                                      <Font name="System Italic" size="10.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <VBox GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <children>
+                                                <TextArea fx:id="inp_order_deliveryadress" prefHeight="50.0" prefWidth="385.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label fx:id="lbl_dicount_error3" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                   <font>
+                                                      <Font name="System Italic" size="10.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </VBox>
+                                          <AnchorPane prefHeight="0.0" prefWidth="373.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <children>
+                                                <TextField fx:id="inp_order_discount" alignment="TOP_LEFT" minWidth="-Infinity" onAction="#order_discount_changed" prefHeight="25.0" prefWidth="275.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label fx:id="lbl_dicount_error" layoutY="25.0" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="System Italic" size="10.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lbl_order_discount" layoutX="275.0" prefHeight="24.0" prefWidth="62.0" textOverrun="CLIP" />
+                                             </children>
+                                          </AnchorPane>
                                        </children>
+                                       <HBox.margin>
+                                          <Insets left="12.0" right="12.0" />
+                                       </HBox.margin>
                                        <VBox.margin>
-                                          <Insets top="10.0" />
+                                          <Insets left="8.0" right="8.0" top="16.0" />
                                        </VBox.margin>
-                                    </HBox>
-                                    <Label fx:id="lbl_dicount_error" textFill="#ae0000">
+                                    </GridPane>
+                                    <Label fx:id="lbl_order_nbproducts" layoutX="10.0" layoutY="348.0">
                                        <font>
-                                          <Font name="System Italic" size="10.0" />
+                                          <Font name="System Italic" size="12.0" />
                                        </font>
-                                       <VBox.margin>
-                                          <Insets left="96.0" />
-                                       </VBox.margin>
                                     </Label>
-                                    <HBox prefHeight="41.0" prefWidth="402.0">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <children>
-                                          <Label fx:id="lbl_order_billingaddress_display" prefHeight="47.0" prefWidth="146.0" text="Adresse de facturation: " HBox.hgrow="ALWAYS">
-                                             <HBox.margin>
-                                                <Insets right="2.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="lbl_order_billingadress" prefHeight="65.0" prefWidth="249.0" textAlignment="CENTER" wrapText="true">
-                                             <font>
-                                                <Font size="11.0" />
-                                             </font></Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="41.0" prefWidth="402.0">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                       <children>
-                                          <Label fx:id="lbl_order_deliveryadress_display" prefHeight="36.0" prefWidth="187.0" text="Adresse de livraison: ">
-                                             <HBox.margin>
-                                                <Insets right="2.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="lbl_order_deliveryadress" prefHeight="63.0" prefWidth="296.0" textAlignment="CENTER" wrapText="true">
-                                             <font>
-                                                <Font size="11.0" />
-                                             </font></Label>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="3.0" prefWidth="416.0" />
+                                    <ScrollPane hbarPolicy="NEVER" layoutX="3.0" layoutY="316.0" prefHeight="341.0" prefWidth="420.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
+                                       <content>
+                                          <VBox fx:id="order_products_pane" prefHeight="339.0" prefWidth="504.0" />
+                                       </content>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="3.0" layoutY="316.0" prefHeight="341.0" prefWidth="420.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0">
-                                 <content>
-                                    <VBox fx:id="order_products_pane" prefHeight="398.0" prefWidth="420.0" />
-                                 </content>
-                              </ScrollPane>
-                              <Label fx:id="lbl_order_nbproducts" layoutX="10.0" layoutY="348.0">
-                                 <font>
-                                    <Font name="System Italic" size="12.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </AnchorPane>
                      </children>

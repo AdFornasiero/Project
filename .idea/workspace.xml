@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/productLine.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/ProductDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/FormValidation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/ProductDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/FormValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/FormValidation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/panel.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +28,7 @@
         <option value="Class" />
         <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="module-info" />
       </list>
     </option>
   </component>
@@ -55,10 +54,13 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../QuizAfpa" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -72,10 +74,14 @@
       <recent name="C:\Users\80010-82-14\IdeaProjects\Project\src\main\resources\org\filrouge" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.filrouge.App" />
       <module name="Project" />
+      <option name="VM_PARAMETERS" value="--add-exports javafx.base/com.sun.javafx.event=org.controlsfx.controls --add-exports javafx.graphics/com.sun.javafx.css=org.controlsfx.controls" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.filrouge.*" />
@@ -86,11 +92,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.App" />
-      </list>
-    </recent_temporary>
+    <configuration name="Project [install:install,javafx:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="delegateBuildToMaven" value="false" />
+            <option name="environmentProperties">
+              <map />
+            </option>
+            <option name="jreName" value="#USE_PROJECT_JDK" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="passParentEnv" value="true" />
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="--add-exports javafx.base/com.sun.javafx.event=org.controlsfx.controls" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install:install" />
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install:install" />
+                <option value="javafx:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Maven.Project [install:install,javafx:run]" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -124,6 +196,8 @@
       <workItem from="1582532240995" duration="12000" />
       <workItem from="1582533356056" duration="10844000" />
       <workItem from="1582616955849" duration="13456000" />
+      <workItem from="1582727282046" duration="4179000" />
+      <workItem from="1582789836983" duration="595000" />
     </task>
     <servers />
   </component>
@@ -131,22 +205,27 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2334" y="176" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581598860362">
+    <state x="2047" y="106" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582886700786">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2334" y="176" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581598860362" />
+    <state x="2047" y="106" width="1092" height="775" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582886700786" />
+    <state x="2373" y="198" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1582877845237">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2373" y="198" key="#com.intellij.ide.macro.MacrosDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582877845237" />
     <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1582633058996">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1155" y="82" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582136761265" />
     <state x="612" y="184" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1582474221714" />
     <state x="2685" y="230" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582633058996" />
-    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582188842056">
+    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582810683803">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1147" y="237" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581723649456" />
     <state x="618" y="307" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.834@0.0.1536.834" timestamp="1582134892989" />
-    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582188842056" />
+    <state x="773" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582797042584" />
+    <state x="2693" y="383" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582810683803" />
     <state x="690" y="268" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580891241214">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -155,35 +234,35 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2505" y="115" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581679342296" />
-    <state x="2660" y="264" key="FileChooserDialogImpl" timestamp="1582191255263">
+    <state x="2660" y="264" key="FileChooserDialogImpl" timestamp="1582811605557">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1180" y="117" key="FileChooserDialogImpl/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581724565681" />
-    <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582191255263" />
-    <state width="1877" height="323" key="GridCell.Tab.0.bottom" timestamp="1582645063552">
+    <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582811605557" />
+    <state width="1877" height="75" key="GridCell.Tab.0.bottom" timestamp="1582888666368">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721119" />
     <state width="1493" height="147" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="323" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063552" />
-    <state width="1877" height="323" key="GridCell.Tab.0.center" timestamp="1582645063551">
+    <state width="1877" height="75" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
+    <state width="1877" height="75" key="GridCell.Tab.0.center" timestamp="1582888666368">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="323" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063551" />
-    <state width="1877" height="323" key="GridCell.Tab.0.left" timestamp="1582645063551">
+    <state width="1877" height="75" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
+    <state width="1877" height="75" key="GridCell.Tab.0.left" timestamp="1582888666368">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="323" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063551" />
-    <state width="1877" height="323" key="GridCell.Tab.0.right" timestamp="1582645063551">
+    <state width="1877" height="75" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
+    <state width="1877" height="75" key="GridCell.Tab.0.right" timestamp="1582888666368">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="323" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582645063551" />
+    <state width="1877" height="75" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1582558717733">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -212,15 +291,16 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2410" y="176" key="Maven.ArtifactSearchDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580892132114" />
-    <state x="2266" y="76" key="SettingsEditor" timestamp="1582200879232">
+    <state x="2266" y="76" key="SettingsEditor" timestamp="1582812727502">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="277" y="61" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1581161547931" />
-    <state x="2266" y="76" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582200879232" />
-    <state x="2575" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1581063164152">
+    <state x="2266" y="76" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582812727502" />
+    <state x="2575" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582877598217">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2575" y="345" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581063164152" />
+    <state x="655" y="345" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582797019834" />
+    <state x="2575" y="345" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582877598217" />
     <state x="2262" y="223" key="new project wizard" timestamp="1582551898245">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -235,10 +315,10 @@
     </state>
     <state x="-1304" y="92" width="672" height="684" key="run.anything.popup/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582311210999" />
     <state x="2536" y="240" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582636095797" />
-    <state x="-1297" y="77" width="672" height="685" key="search.everywhere.popup" timestamp="1582310270580">
-      <screen x="-1920" y="-150" width="1920" height="1050" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582812719081">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="77" width="672" height="685" key="search.everywhere.popup/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582310270580" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582038571374" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582812719081" />
   </component>
 </project>

@@ -92,6 +92,26 @@ public class OrderDAO {
         return discount;
     }
 
+    public static List<Discount> getDiscounts(){
+        List<Discount> discounts = new ArrayList<>();
+        try {
+            Statement stmt = db.createStatement();
+            ResultSet res = stmt.executeQuery("select * from discounts");
+            while(res.next()){
+                discounts.add(new Discount(
+                res.getInt("discountID"),
+                res.getString("code"),
+                res.getInt("percentvalue"),
+                res.getInt("fixedvalue"),
+                res.getInt("minamount"),
+                res.getBoolean("active")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return discounts;
+    }
+
     public static List<Order> searchOrders(String entry, int state, int payed){
         List<Order> orders = new ArrayList<>();
         String query = "select * from orders, users where orders.userID = users.userID ";
