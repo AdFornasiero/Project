@@ -49,7 +49,7 @@ public class Panel implements Initializable {
     public ComboBox cmb_category_search;
     public Label lbl_nb_products;
 
-    // Details inputs
+    // Product details
     public TextField inp_product_label;
     public TextField inp_product_reference;
     public ComboBox cmb_product_category;
@@ -60,8 +60,6 @@ public class Panel implements Initializable {
     public TextField inp_product_discount;
     public TextArea inp_product_description;
     public CheckBox chk_available;
-
-    // Details display
     public Label lbl_add_date;
     public Label lbl_update_date;
     public Label lbl_id;
@@ -90,11 +88,14 @@ public class Panel implements Initializable {
         //
         // ORDER PANE
         //
+    // Search fields
     public ComboBox cmb_order_state_search;
     public ComboBox cmb_order_payment_search;
-    public TextField inp_order_id;
-    public TextField inp_order_owner;
+    public TextField inp_order_search_id;
+    public TextField inp_order_search_owner;
     public Label lbl_nb_orders;
+
+    // TableView
     public TableColumn<Order, Integer> col_order_id;
     public TableColumn<Order, String> col_order_ownerLogin;
     public TableColumn<Order, Adress> col_order_billing;
@@ -104,21 +105,27 @@ public class Panel implements Initializable {
     public TableColumn<Order, Discount> col_order_discount;
     public TableColumn<Order, String> col_order_state;
     public TableView<Order> orders_table;
-    public Label orderid_error;
-    public Label lbl_order_owner;
+
+    // Error labels
+    public Label lbl_order_billingadress_error;
+    public Label lbl_order_deliveryadress_error;
+    public Label lbl_order_discount_error;
+    public Label lbl_order_owner_error;
+    public Label lbl_order_search_id_error;
+
+    // Order details
+    public TextField inp_order_owner;
+    public TextField inp_order_discount;
+    public TextArea inp_order_billingadress;
+    public TextArea inp_order_deliveryadress;
+    public ComboBox cmb_order_state;
+    public ComboBox cmb_order_payed;
     public Label lbl_order_id;
     public Label lbl_order_price;
     public Label lbl_order_discount;
-    public Label lbl_order_billingadress;
-    public Label lbl_order_deliveryadress;
     public Label lbl_order_nbproducts;
     public VBox order_products_pane;
-    public ComboBox cmb_order_state;
-    public ComboBox cmb_order_payed;
-    public TextField inp_order_discount;
-    public Label lbl_dicount_error;
-    public Label lbl_order_billingaddress_display;
-    public Label lbl_order_discount_display;
+
 
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
@@ -527,21 +534,21 @@ public class Panel implements Initializable {
 
     public void order_search_id(ActionEvent actionEvent) {
         String[] idRules = {"integer", "exists(orders.orderID)"};
-        if(inp_order_id.getText().isBlank()){
-            orderid_error.setText("");
+        if(inp_order_search_id.getText().isBlank()){
+            lbl_order_search_id_error.setText("");
             orders.clear();
             orders.addAll(OrderDAO.getOrders());
             if(orders.size() == 0) lbl_nb_orders.setText("Aucune commande");
             else lbl_nb_orders.setText(orders.size() + " commandes");
         }
         else{
-            if(FormValidation.validField(inp_order_id.getText(), idRules).size() > 0){
-                orderid_error.setText(FormValidation.getFirstMessage());
+            if(FormValidation.validField(inp_order_search_id.getText(), idRules).size() > 0){
+                lbl_order_search_id_error.setText(FormValidation.getFirstMessage());
             }
             else{
-                orderid_error.setText("");
+                lbl_order_search_id_error.setText("");
                 orders.clear();
-                orders.addAll(OrderDAO.getOrder(Integer.parseInt(inp_order_id.getText())));
+                orders.addAll(OrderDAO.getOrder(Integer.parseInt(inp_order_search_id.getText())));
             }
         }
     }
@@ -588,10 +595,10 @@ public class Panel implements Initializable {
         if(orders_table.getSelectionModel() != null && orders_table.getSelectionModel().getSelectedItem() != null) {
             selectedOrder = orders_table.getSelectionModel().getSelectedItem();
             lbl_order_id.setText(String.valueOf(selectedOrder.getId()));
-            lbl_order_owner.setText(selectedOrder.getOwnerLogin());
+            inp_order_owner.setText(selectedOrder.getOwnerLogin());
             lbl_order_price.setText(selectedOrder.getStrPrice());
-            lbl_order_billingadress.setText(selectedOrder.getBillingAdress().detailedStringAdress());
-            lbl_order_deliveryadress.setText(selectedOrder.getDeliveryAdress().detailedStringAdress());
+            inp_order_billingadress.setText(selectedOrder.getBillingAdress().detailedStringAdress());
+            inp_order_deliveryadress.setText(selectedOrder.getDeliveryAdress().detailedStringAdress());
             lbl_order_nbproducts.setText(selectedOrder.getNbproducts() + " produits");
             if(selectedOrder.getDiscount().getCode() == null){
                 inp_order_discount.setText("");
@@ -649,7 +656,7 @@ public class Panel implements Initializable {
             lbl_order_discount.setText(selectedOrder.getDiscount().getDiscountStrType());
             lbl_order_price.setText(selectedOrder.getStrPrice());
         }
-        lbl_dicount_error.setText(FormValidation.getFirstMessage());
+        lbl_order_discount_error.setText(FormValidation.getFirstMessage());
         lbl_order_discount.setText("");
     }
 }

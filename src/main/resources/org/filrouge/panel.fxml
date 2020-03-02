@@ -219,16 +219,16 @@
                                  <children>
                                     <ComboBox fx:id="cmb_order_state_search" layoutX="395.0" layoutY="19.0" onAction="#order_search_state" prefHeight="26.0" prefWidth="130.0" promptText="État" />
                                     <ComboBox fx:id="cmb_order_payment_search" layoutX="601.0" layoutY="19.0" onAction="#order_search_payment" prefHeight="26.0" prefWidth="130.0" promptText="Paiement" />
-                                    <TextField fx:id="inp_order_id" layoutX="31.0" layoutY="19.0" onAction="#order_search_id" prefHeight="25.0" prefWidth="78.0" />
+                                    <TextField fx:id="inp_order_search_id" layoutX="31.0" layoutY="19.0" onAction="#order_search_id" prefHeight="25.0" prefWidth="78.0" />
                                     <Label layoutX="14.0" layoutY="23.0" text="N°" />
-                                    <TextField fx:id="inp_order_owner" layoutX="198.0" layoutY="19.0" onAction="#order_search_owner" promptText="(n° ou identifiant)" />
+                                    <TextField fx:id="inp_order_search_owner" layoutX="198.0" layoutY="19.0" onAction="#order_search_owner" promptText="(n° ou identifiant)" />
                                     <Label layoutX="159.0" layoutY="23.0" text="Client" />
                                     <Label fx:id="lbl_nb_orders" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="741.4" layoutY="45.0" text="Aucune commande" textAlignment="RIGHT" AnchorPane.rightAnchor="5.0">
                                        <font>
                                           <Font name="System Italic" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="orderid_error" layoutX="16.0" layoutY="44.0" textFill="#ae0000">
+                                    <Label fx:id="lbl_order_id_error" layoutX="16.0" layoutY="44.0" textFill="#ae0000">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
@@ -315,7 +315,16 @@
                                                 <Insets />
                                              </VBox.margin>
                                           </Label>
-                                          <Label fx:id="lbl_order_id_display" prefHeight="32.0" prefWidth="23.0" text="n° " GridPane.valignment="TOP" />
+                                          <HBox>
+                                             <children>
+                                                <Label fx:id="lbl_order_id_display" prefHeight="52.0" prefWidth="20.0" text="n°" GridPane.valignment="TOP" />
+                                                <Label fx:id="lbl_order_id" prefHeight="53.0" prefWidth="92.0" text="529684">
+                                                   <font>
+                                                      <Font size="8.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                           <AnchorPane prefHeight="0.0" prefWidth="385.0" GridPane.columnIndex="1">
                                              <children>
                                                 <Label fx:id="lbl_order_customer_display" alignment="BASELINE_CENTER" prefHeight="32.0" prefWidth="54.0" text="Client: ">
@@ -326,7 +335,7 @@
                                                       <Insets left="4.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label fx:id="lbl_dicount_error1" layoutX="68.0" layoutY="35.0" text="err" textFill="#ae0000">
+                                                <Label fx:id="lbl_order_owner_error" layoutX="68.0" layoutY="35.0" text="err" textFill="#ae0000">
                                                    <font>
                                                       <Font name="System Italic" size="10.0" />
                                                    </font>
@@ -348,7 +357,7 @@
                                           <VBox GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <children>
                                                 <TextArea fx:id="inp_order_billingadress" prefHeight="50.0" prefWidth="373.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <Label fx:id="lbl_dicount_error2" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <Label fx:id="lbl_order_billingadress_error" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font name="System Italic" size="10.0" />
                                                    </font>
@@ -358,7 +367,7 @@
                                           <VBox GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <children>
                                                 <TextArea fx:id="inp_order_deliveryadress" prefHeight="50.0" prefWidth="385.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Label fx:id="lbl_dicount_error3" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <Label fx:id="lbl_order_deliveryadress_error" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <font>
                                                       <Font name="System Italic" size="10.0" />
                                                    </font>
@@ -368,7 +377,7 @@
                                           <AnchorPane prefHeight="0.0" prefWidth="373.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <children>
                                                 <TextField fx:id="inp_order_discount" alignment="TOP_LEFT" minWidth="-Infinity" onAction="#order_discount_changed" prefHeight="25.0" prefWidth="275.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <Label fx:id="lbl_dicount_error" layoutY="25.0" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <Label fx:id="lbl_order_discount_error" layoutY="25.0" text="err" textFill="#ae0000" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font name="System Italic" size="10.0" />
                                                    </font>

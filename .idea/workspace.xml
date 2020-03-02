@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c140b41-1b2e-4efa-a7ff-c6e6f51dbebd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/DAL/OrderDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/filrouge/controllers/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/filrouge/panel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/DAL/OrderDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/filrouge/controllers/Panel.class" afterDir="false" />
@@ -239,30 +231,30 @@
     </state>
     <state x="-1180" y="117" key="FileChooserDialogImpl/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1581724565681" />
     <state x="2660" y="264" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582811605557" />
-    <state width="1877" height="75" key="GridCell.Tab.0.bottom" timestamp="1582888666368">
+    <state width="1877" height="186" key="GridCell.Tab.0.bottom" timestamp="1583145550342">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.bottom/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721119" />
     <state width="1493" height="147" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="75" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
-    <state width="1877" height="75" key="GridCell.Tab.0.center" timestamp="1582888666368">
+    <state width="1877" height="186" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1583145550342" />
+    <state width="1877" height="186" key="GridCell.Tab.0.center" timestamp="1583145550342">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.center/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="75" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
-    <state width="1877" height="75" key="GridCell.Tab.0.left" timestamp="1582888666368">
+    <state width="1877" height="186" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1583145550342" />
+    <state width="1877" height="186" key="GridCell.Tab.0.left" timestamp="1583145550342">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.left/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="75" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
-    <state width="1877" height="75" key="GridCell.Tab.0.right" timestamp="1582888666368">
+    <state width="1877" height="186" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1583145550342" />
+    <state width="1877" height="186" key="GridCell.Tab.0.right" timestamp="1583145550342">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="121" key="GridCell.Tab.0.right/0.0.1536.834/-1920.-150.1920.1050@-1920.-150.1920.1050" timestamp="1582377721118" />
     <state width="1493" height="147" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1582488053727" />
-    <state width="1877" height="75" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582888666368" />
+    <state width="1877" height="186" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1583145550342" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1582558717733">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -296,6 +288,10 @@
     </state>
     <state x="277" y="61" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1581161547931" />
     <state x="2266" y="76" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1582812727502" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1583137463852">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1583137463852" />
     <state x="2575" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1582877598217">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
