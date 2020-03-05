@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.controlsfx.glyphfont.FontAwesome;
 import org.controlsfx.glyphfont.GlyphFont;
@@ -116,16 +117,16 @@ public class Panel implements Initializable {
     // Order details
     public TextField inp_order_owner;
     public TextField inp_order_discount;
-    public TextArea inp_order_billingadress;
-    public TextArea inp_order_deliveryadress;
+    public TextField inp_order_billingadress;
+    public TextField inp_order_deliveryadress;
     public ComboBox cmb_order_state;
     public ComboBox cmb_order_payed;
     public Label lbl_order_id;
     public Label lbl_order_price;
     public Label lbl_order_discount;
+    public Label lbl_order_date;
     public Label lbl_order_nbproducts;
     public VBox order_products_pane;
-
 
 
     String[] labelRules = {"required", "min_length(4)", "max_length(64)", "regex(^[0-9A-Za-z.,-_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+$)"};
@@ -151,15 +152,14 @@ public class Panel implements Initializable {
         FormValidation.setDatabase(DBConnect.connect());
         products.addAll(ProductDAO.getProducts());
         categories.addAll(Category.getOrderedCategories());
-        orders.addAll(OrderDAO.getOrders());
-
         categories.add(0,"Sélectionnez une catégorie");
+        orders.addAll(OrderDAO.getOrders());
+        suppliers.addAll(SupplierDAO.getSuppliers());
+
         cmb_category_search.setItems(categories);
         cmb_product_category.setItems(categories);
         cmb_category_search.setValue("Sélectionnez une catégorie");
-        String[] azer = {"tamere", "tonpere", "tasoeur", "tagrandmere"};
 
-        suppliers.addAll(SupplierDAO.getSuppliers());
         cmb_supplier.setItems(suppliers);
         cmb_supplier.setCellFactory(new Callback<ListView<Supplier>, ListCell<Supplier>>(){
             public ListCell<Supplier> call(ListView<Supplier> listView){
@@ -213,14 +213,19 @@ public class Panel implements Initializable {
         FormValidation.setMessage("min", "Entrez un plus grand nombre");
         FormValidation.setMessage("max", "C'est un peu trop grand");
 
-        //inp_order_discount = TextFields.createClearableTextField();
         List<String> discountList = new ArrayList<>();
-        OrderDAO.getDiscounts().forEach(discount -> discountList.add(discount.toString()));
+        OrderDAO.getDiscounts().forEach(discount -> discountList.add(discount.getCode()));
         TextFields.bindAutoCompletion(inp_order_discount, discountList);
-        GlyphFont fontAwesome = GlyphFontRegistry.font("FontAwesome");
 
+        GlyphFont fontAwesome = GlyphFontRegistry.font("FontAwesome");
         btn_product_save.setGraphic(fontAwesome.create(FontAwesome.Glyph.GAMEPAD));
+
+        inp_order_billingadress.textProperty().addListener((observable, oldValue, value) ->{
+            billingAdressCompletion.dispose();
+            billingAdressCompletion = TextFields.bindAutoCompletion(inp_order_billingadress, AdressDAO.searchAdresses(value));
+        });
     }
+    private AutoCompletionBinding<String> billingAdressCompletion, deliveryAdressCompletion;
 
     // On click on products table
     // Selects a single product and set it to fields
@@ -597,8 +602,8 @@ public class Panel implements Initializable {
             lbl_order_id.setText(String.valueOf(selectedOrder.getId()));
             inp_order_owner.setText(selectedOrder.getOwnerLogin());
             lbl_order_price.setText(selectedOrder.getStrPrice());
-            inp_order_billingadress.setText(selectedOrder.getBillingAdress().detailedStringAdress());
-            inp_order_deliveryadress.setText(selectedOrder.getDeliveryAdress().detailedStringAdress());
+            inp_order_billingadress.setText(selectedOrder.getBillingAdress().toString());
+            inp_order_deliveryadress.setText(selectedOrder.getDeliveryAdress().toString());
             lbl_order_nbproducts.setText(selectedOrder.getNbproducts() + " produits");
             if(selectedOrder.getDiscount().getCode() == null){
                 inp_order_discount.setText("");
@@ -612,29 +617,38 @@ public class Panel implements Initializable {
             cmb_order_state.setValue(selectedOrder.getStrState());
             cmb_order_payed.setValue(selectedOrder.getStrPayed());
 
+            if (selectedOrder.getDate() != null) {
+                LocalDate date = LocalDate.parse(String.valueOf(selectedOrder.getDate()));
+                lbl_order_date.setText(date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+            }
+            else{
+                lbl_order_date.setText(" - ");
+            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/productLine.fxml"));
+
             selectedOrder.getProducts().forEach((id, attr) -> {
                 Label lbldelivered, lbllabel, lblqty, lblproduct;
                 Product p = ProductDAO.getProduct(id);
                 if(p != null) {
-                    lblproduct = new Label("\tProduit n°" + p.getId());
+                    /*lblproduct = new Label("\tProduit n°" + p.getId());
                     lbllabel = new Label("Article:\t" + p.getMaker() + " - " + p.getLabel());
                     lblqty = new Label("Quantité:  " + attr.getKey());
                     if (attr.getValue()){
                         lbldelivered = new Label("Livré:\tOui"); }
                     else {
                         lbldelivered = new Label("Livré:\tNon"); }
-                    order_products_pane.getChildren().addAll(new VBox(lblproduct, lbllabel, lblqty, lbldelivered));
+                    order_products_pane.getChildren().addAll(new VBox(lblproduct, lbllabel, lblqty, lbldelivered));*/
+
                 }
             });
-            order_products_pane.getChildren().forEach(vbox -> {
+            /*order_products_pane.getChildren().forEach(vbox -> {
                 vbox.setStyle("-fx-background-color: #e8e8e8; -fx-padding: 6px; -fx-font-family: Verdana");
                 VBox.setMargin(vbox, new Insets(8,0,0,0));
-            });
+            });*/
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/productLine.fxml"));
             try {
-                AnchorPane pane = loader.load();
-                System.out.println(pane.getChildren().get(1));
+                order_products_pane.getChildren().add(loader.load());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -650,13 +664,19 @@ public class Panel implements Initializable {
     }
 
     public void order_discount_changed(ActionEvent actionEvent) {
+        System.out.println("triggered");
         String[] discountRules = {"exists(discounts.code)"};
         if(FormValidation.validField(inp_order_discount.getText(), discountRules).size() == 0){
-            //order_update();
+            selectedOrder.setDiscount(OrderDAO.getDiscount(inp_order_discount.getText()));
+            lbl_order_discount_error.setText("");
             lbl_order_discount.setText(selectedOrder.getDiscount().getDiscountStrType());
             lbl_order_price.setText(selectedOrder.getStrPrice());
         }
-        lbl_order_discount_error.setText(FormValidation.getFirstMessage());
-        lbl_order_discount.setText("");
+        else{
+            lbl_order_discount_error.setText(FormValidation.getFirstMessage());
+            lbl_order_discount.setText("");
+        }
     }
+
+
 }

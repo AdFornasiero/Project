@@ -75,7 +75,7 @@ public class OrderDAO {
     public static Discount getDiscount(String code){
         Discount discount = new Discount();
         try {
-            PreparedStatement stmt = db.prepareStatement("select * from discounts where discountID = ?");
+            PreparedStatement stmt = db.prepareStatement("select * from discounts where code = ?");
             stmt.setString(1, code);
             ResultSet res = stmt.executeQuery();
             if(res.next()){

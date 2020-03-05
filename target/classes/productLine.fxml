@@ -6,10 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="99.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="35.0" layoutY="21.0" text="1er lbl" />
+      <Label fx:id="lbl_product_label" layoutX="18.0" layoutY="14.0" text="1er lbl" />
       <Label layoutX="35.0" layoutY="50.0" text="2e lbl" />
    </children>
 </AnchorPane>
